@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CARDINAL PROFESSOR</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- فونت نستعلیق برای فارسی -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- فونت نستعلیق فارسی -->
   <link href="https://cdn.font-store.ir/yekan-fonts/irannastaliq.css" rel="stylesheet" type="text/css" />
-  <!-- فونت خاص انگلیسی برای Professor Cardinal -->
+  <!-- فونت انگلیسی برای Professor Cardinal -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 
   <style>
@@ -53,7 +53,6 @@
       object-fit: cover;
     }
 
-    /* ✅ نوشته زیر عکس */
     .professor-title {
       font-family: "Cinzel Decorative", serif;
       font-size: 26px;
@@ -63,7 +62,6 @@
       letter-spacing: 1px;
     }
 
-    /* ✅ فونت نستعلیق برای شعار فارسی */
     .slogan {
       font-family: "IranNastaliq", "Gandom", cursive;
       font-size: 40px;
@@ -113,7 +111,6 @@
       box-shadow: 0 0 10px rgba(255,255,255,0.5);
     }
 
-    /* --- کارت پروژه‌ها --- */
     .projects {
       display: flex;
       flex-wrap: wrap;
@@ -131,6 +128,7 @@
       text-align: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       transition: 0.3s;
+      cursor: pointer;
     }
 
     .project-card:hover {
@@ -182,9 +180,51 @@
       color: #000;
     }
 
+    /* ----------- پاپ‌آپ پروژه ----------- */
+    .project-popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background: #ccc;
+      color: #000;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 700px;
+      width: 90%;
+      max-height: 80%;
+      overflow-y: auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      animation: popupFade 0.3s ease;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    @keyframes popupFade {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- دکمه تغییر زبان -->
   <div class="language-switch">
     <img src="Flag_of_iran_standard.svg.webp" id="fa-btn" title="فارسی" class="flag-img">
     <img src="Flag_of_the_United_Kingdom_(3-5).svg.webp" id="en-btn" title="English" class="flag-img">
@@ -197,17 +237,16 @@
     <div class="professor-title">Professor Cardinal</div>
     <h1>ادیتور ویدیو و عکس</h1>
     <h2>به سوی بینهایت و فراتر از آن</h2>
-
     <a class="email-button" href="mailto:sirvanprofessor@gmail.com">📧 ارسال ایمیل به من</a>
 
     <div class="section-title">پروژه‌ها</div>
     <div class="projects">
-      <div class="project-card" onclick="window.open('https://github.com/sirvanprofessor-beep/THATSCARDINAL', '_blank')">
+      <div class="project-card" onclick="openPopup('history')">
         <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="Project 1">
         <h3>تاریخ نگاری</h3>
         <p>نگاهی دقیق به تاریخ</p>
       </div>
-      <div class="project-card">
+      <div class="project-card" onclick="openPopup('poster')">
         <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project2.webp" alt="Project 2">
         <h3>پوستر سینمایی</h3>
         <p>طراحی پوستر فیلم های سینمایی</p>
@@ -221,51 +260,62 @@
     </div>
   </div>
 
-  <!-- English -->
-  <div class="container" id="en-content" style="display:none; direction:ltr; text-align:center;">
-    <div class="slogan">Woman, Life, Freedom</div>
-    <img class="profile-img" src="IMG_4716.webp" alt="PROFESSOR">
-    <div class="professor-title">Professor Cardinal</div>
-    <h1>Video & Photo Editor</h1>
-    <h2>To infinity and beyond</h2>
-
-    <a class="email-button" href="mailto:sirvanprofessor@gmail.com">📧 Email Me</a>
-
-    <div class="section-title">Projects</div>
-    <div class="projects">
-      <div class="project-card" onclick="window.open('https://github.com/sirvanprofessor-beep/THATSCARDINAL', '_blank')">
-        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="Project 1">
-        <h3>Project 1</h3>
-        <p>A closer look at history</p>
-      </div>
-      <div class="project-card">
-        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project2.webp" alt="Project 2">
-        <h3>Project 2</h3>
-        <p>Movie poster design</p>
-      </div>
-    </div>
-
-    <div class="social-icons">
-      <a href="https://www.instagram.com/thatscardinal" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://t.me/onesecondloop" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-      <a href="https://github.com/sirvanprofessor-beep" target="_blank"><i class="fab fa-github"></i></a>
+  <!-- پنجره پاپ‌آپ پروژه‌ها -->
+  <div id="projectPopup" class="project-popup" onclick="closePopup(event)">
+    <div class="popup-content" id="popupContent">
+      <span class="popup-close" onclick="closePopup(event)">❌</span>
+      <div id="popupText">متن پروژه در اینجا نمایش داده می‌شود...</div>
     </div>
   </div>
 
   <script>
+    function openPopup(project) {
+      const popup = document.getElementById("projectPopup");
+      const text = document.getElementById("popupText");
+
+      if (project === "history") {
+        text.innerHTML = `
+          <h2>پروژه تاریخ‌نگاری</h2>
+          <p style="white-space: pre-line; text-align: justify;">
+برداشت‌های نادرست از علم و فلسفه
+
+مفاهیم عمیق علمی و فلسفی بیش از هر زمان دیگری در دسترس‌اند، اما همین دسترسی گاهی به سوء‌برداشت می‌انجامد. بسیاری بدون درک مبانی نظری، از جملات فیلسوفان یا یافته‌های علمی برای تأیید باورهای شخصی یا ایدئولوژیک خود استفاده می‌کنند؛ پدیده‌ای که می‌توان آن را «شبه‌علم» و «شبه‌فلسفه» نامید.
+
+نمونه‌ی روشن این مسئله، سرنوشت ایده‌ی ابر‌انسان در اندیشه‌ی نیچه است. او از انسانی سخن می‌گفت که با خلاقیت و خودآگاهی، از مرزهای اخلاق تحمیلی عبور کند و معنا را از درون خود بیافریند. اما بعدها رژیم نازی این مفهوم را از بستر فلسفی‌اش جدا کرد و به ابزار توجیه برتری نژادی بدل ساخت؛ در حالی که نیچه اساساً از سلطه یا نژاد برتر سخن نمی‌گفت.
+
+این تحریف‌ها یادآور آن‌اند که هیچ اندیشه‌ای را نباید جدا از زمینه‌اش فهمید. فلسفه و علم برای اندیشیدن‌اند، نه برای شعار دادن. اگر نیچه از ابر‌انسان گفت، هدفش آزادی از تقلید و جزم‌گرایی بود، نه ستایش قدرت کور.
+          </p>
+        `;
+      } else if (project === "poster") {
+        text.innerHTML = `
+          <h2>پروژه طراحی پوستر</h2>
+          <p>
+طراحی پوسترهای سینمایی با تمرکز بر رنگ، نور، و حس درونی فیلم انجام می‌شود تا هر تصویر داستانی مستقل روایت کند.
+          </p>
+        `;
+      }
+
+      popup.style.display = "flex";
+    }
+
+    function closePopup(event) {
+      const popup = document.getElementById("projectPopup");
+      if (event.target.classList.contains("project-popup") || event.target.classList.contains("popup-close")) {
+        popup.style.display = "none";
+      }
+    }
+
+    // -------- زبان‌ها --------
     const faBtn = document.getElementById('fa-btn');
     const enBtn = document.getElementById('en-btn');
     const faContent = document.getElementById('fa-content');
-    const enContent = document.getElementById('en-content');
 
     function setLanguage(lang) {
       if (lang === 'fa') {
         faContent.style.display = 'block';
-        enContent.style.display = 'none';
         document.body.dir = 'rtl';
       } else {
         faContent.style.display = 'none';
-        enContent.style.display = 'block';
         document.body.dir = 'ltr';
       }
       localStorage.setItem('lang', lang);
@@ -274,6 +324,8 @@
     faBtn.addEventListener('click', () => setLanguage('fa'));
     enBtn.addEventListener('click', () => setLanguage('en'));
     setLanguage(localStorage.getItem('lang') || 'fa');
+
   </script>
+
 </body>
 </html>

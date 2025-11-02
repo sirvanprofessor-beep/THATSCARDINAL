@@ -212,16 +212,26 @@
   </div>
 
   <script>
-    // ====== Preload background images to reduce flicker ======
-    const backgrounds = ['background1.webp','background2.webp'];
-    backgrounds.forEach(src => { const i=new Image(); i.src=src; });
+   // ====== Background rotation ======
+const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
+let currentBg = 0;
 
-    // ====== Set random background on load ======
-    function setRandomBackground(){
-      const chosen = backgrounds[Math.floor(Math.random()*backgrounds.length)];
-      document.body.style.background = `url('${chosen}') no-repeat center center fixed`;
-      document.body.style.backgroundSize = 'cover';
-    }
+// تابع تغییر بک‌گراند
+function setBackground(index) {
+  document.body.style.background = `url('${backgrounds[index]}') no-repeat center center fixed`;
+  document.body.style.backgroundSize = 'cover';
+}
+
+// تنظیم بک‌گراند اولیه به‌صورت تصادفی
+currentBg = Math.floor(Math.random() * backgrounds.length);
+setBackground(currentBg);
+
+// تغییر خودکار هر 30 ثانیه
+setInterval(() => {
+  currentBg = (currentBg + 1) % backgrounds.length;
+  setBackground(currentBg);
+}, 30000);
+
 
     // ====== Language switch logic (persist in localStorage) ======
     const faBtn = document.getElementById('fa-btn');

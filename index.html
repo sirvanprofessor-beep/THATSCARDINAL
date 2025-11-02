@@ -6,7 +6,7 @@
   <title>صفحه شخصی PROFESSOR</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&family=Estedad:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&family=Gandom&display=swap');
 
     body {
       font-family: "Vazirmatn", sans-serif;
@@ -48,11 +48,11 @@
     }
 
     .slogan {
-      font-family: "Estedad", sans-serif;
-      font-size: 28px;
+      font-family: "Gandom", cursive;
+      font-size: 30px;
       color: #fff;
-      text-shadow: 0 0 15px rgba(255,255,255,0.4);
-      margin-bottom: 10px;
+      text-shadow: 0 0 12px rgba(255,255,255,0.6);
+      margin-bottom: 15px;
     }
 
     h1 { margin: 10px 0; font-size: 26px; }
@@ -78,6 +78,7 @@
       right: 20px;
       display: flex;
       gap: 10px;
+      z-index: 10;
     }
 
     .flag-img {
@@ -86,6 +87,12 @@
       cursor: pointer;
       border: 2px solid #fff;
       border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    .flag-img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(255,255,255,0.5);
     }
 
     /* --- کارت‌های پروژه --- */
@@ -200,10 +207,6 @@
     }
 
     .close:hover { color: #ffd700; }
-
-    @media (max-width: 600px) {
-      .projects { flex-direction: row; }
-    }
   </style>
 </head>
 <body>
@@ -218,30 +221,6 @@
     <img class="profile-img" src="IMG_4716.webp" alt="PROFESSOR">
     <h1>ادیتور ویدیو و عکس</h1>
     <h2>به سوی بینهایت و فراتر از آن</h2>
-
-    <a class="email-button" href="mailto:sirvanprofessor@gmail.com">📧 ارسال ایمیل به من</a>
-
-    <div class="section-title">پروژه‌ها</div>
-    <div class="projects">
-      <div class="project-card" data-project="1">
-        <img src="hitler and nitche.webp" alt="project1">
-        <h3>THATSCARDINAL</h3>
-      </div>
-      <div class="project-card" data-project="2">
-        <img src="project2.jpg" alt="project2">
-        <h3>پوستر تبلیغاتی</h3>
-      </div>
-      <div class="project-card" data-project="3">
-        <img src="project3.jpg" alt="project3">
-        <h3>تیزر برند</h3>
-      </div>
-    </div>
-
-    <div class="social-icons">
-      <a href="https://www.instagram.com/thatscardinal" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://t.me/onesecondloop" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-      <a href="https://github.com/sirvanprofessor-beep" target="_blank"><i class="fab fa-github"></i></a>
-    </div>
   </div>
 
   <!-- English -->
@@ -250,40 +229,6 @@
     <img class="profile-img" src="IMG_4716.webp" alt="PROFESSOR">
     <h1>Video & Photo Editor</h1>
     <h2>To infinity and beyond</h2>
-
-    <a class="email-button" href="mailto:sirvanprofessor@gmail.com">📧 Email Me</a>
-
-    <div class="section-title">Projects</div>
-    <div class="projects">
-      <div class="project-card" data-project="1">
-        <img src="hitler and nitche.webp" alt="project1">
-        <h3>THATSCARDINAL</h3>
-      </div>
-      <div class="project-card" data-project="2">
-        <img src="project2.jpg" alt="project2">
-        <h3>Poster Design</h3>
-      </div>
-      <div class="project-card" data-project="3">
-        <img src="project3.jpg" alt="project3">
-        <h3>Brand Teaser</h3>
-      </div>
-    </div>
-
-    <div class="social-icons">
-      <a href="https://www.instagram.com/thatscardinal" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://t.me/onesecondloop" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-    </div>
-  </div>
-
-  <!-- پاپ‌آپ -->
-  <div id="project-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <img id="project-img" src="" alt="project image">
-      <h3 id="project-title"></h3>
-      <p id="project-desc"></p>
-      <a id="project-link" href="#" target="_blank" style="color:#ffd700; text-decoration:none;">مشاهده پروژه در GitHub</a>
-    </div>
   </div>
 
   <script>
@@ -296,62 +241,21 @@
       if (lang === 'fa') {
         faContent.style.display = 'block';
         enContent.style.display = 'none';
+        document.body.dir = 'rtl';
       } else {
         faContent.style.display = 'none';
         enContent.style.display = 'block';
+        document.body.dir = 'ltr';
       }
       localStorage.setItem('lang', lang);
     }
 
     faBtn.addEventListener('click', () => setLanguage('fa'));
     enBtn.addEventListener('click', () => setLanguage('en'));
+
+    // بارگذاری خودکار زبان ذخیره‌شده بدون نیاز به رفرش
     const savedLang = localStorage.getItem('lang') || 'fa';
     setLanguage(savedLang);
-
-    // پروژه‌ها
-    const projectData = {
-      1: {
-        title: "تاریخ نگاری ",
-        img: "https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp
-",
-        desc: "پروژه‌ی ویرایش ویدیو با ترکیب فلسفه نیچه و تصویرسازی هنری.",
-        link: "https://github.com/sirvanprofessor-beep/THATSCARDINAL"
-      },
-      2: {
-        title: "پوستر تبلیغاتی / Poster Design",
-        img: "project2.jpg",
-        desc: "طراحی پوستر برای برند با استفاده از Photoshop و رنگ‌های مدرن.",
-        link: "#"
-      },
-      3: {
-        title: "پوستر فیلم / Brand Teaser",
-        img: "project3.jpg",
-        desc: "ساخت تیزر ویدئویی با ریتم و جلوه‌های ویژه برای معرفی برند.",
-        link: "#"
-      }
-    };
-
-    const modal = document.getElementById("project-modal");
-    const modalImg = document.getElementById("project-img");
-    const modalTitle = document.getElementById("project-title");
-    const modalDesc = document.getElementById("project-desc");
-    const modalLink = document.getElementById("project-link");
-    const closeBtn = document.querySelector(".close");
-
-    document.querySelectorAll(".project-card").forEach(card => {
-      card.addEventListener("click", () => {
-        const id = card.getAttribute("data-project");
-        const data = projectData[id];
-        modalImg.src = data.img;
-        modalTitle.textContent = data.title;
-        modalDesc.textContent = data.desc;
-        modalLink.href = data.link;
-        modal.style.display = "flex";
-      });
-    });
-
-    closeBtn.addEventListener("click", () => modal.style.display = "none");
-    window.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
   </script>
 </body>
 </html>

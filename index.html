@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
-    /* کل بدنه */
     body {
       margin: 0;
       padding: 0;
@@ -29,7 +28,6 @@
       overflow-x: hidden;
     }
 
-    /* کانتینر اصلی با بلر */
     .container {
       width: 90%;
       max-width: 900px;
@@ -46,7 +44,6 @@
 
     .container:hover { transform: scale(1.02); }
 
-    /* تصویر پروفایل */
     .profile-img {
       width: 150px;
       height: 150px;
@@ -56,7 +53,6 @@
       object-fit: cover;
     }
 
-    /* عنوان پروفسور */
     .professor-title {
       font-family: "Cinzel Decorative", serif;
       font-size: 26px;
@@ -66,7 +62,6 @@
       letter-spacing: 1px;
     }
 
-    /* شعار */
     .slogan {
       font-family: "IranNastaliq", cursive;
       font-size: 40px;
@@ -79,7 +74,6 @@
     h1 { margin: 10px 0; font-size: 26px; font-family: "DimaLatifi", serif; color: #ffd700}
     h2 { margin: 10px 0 20px 0; font-size: 15px; font-family: "DimaLatifi", serif; color: #ffd700 }
 
-    /* دکمه ایمیل */
     .email-button {
       display: inline-block;
       margin: 15px 0;
@@ -94,7 +88,6 @@
 
     .email-button:hover { background: #e5c100; }
 
-    /* سوئیچ زبان */
     .language-switch {
       position: absolute;
       top: 20px;
@@ -118,7 +111,6 @@
       box-shadow: 0 0 10px rgba(255,255,255,0.5);
     }
 
-    /* پروژه‌ها */
     .projects {
       display: flex;
       flex-wrap: wrap;
@@ -155,7 +147,6 @@
     .project-card h3 { font-size: 18px; color: #333; margin: 10px 0 5px; }
     .project-card p { font-size: 14px; color: #555; }
 
-    /* شبکه‌های اجتماعی */
     .social-icons {
       margin-top: 20px;
       display: flex;
@@ -177,6 +168,41 @@
     }
 
     .social-icons a:hover { transform: scale(1.2); color: #000; }
+
+    /* پاپ‌آپ */
+    .modal {
+      display: none; 
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 500px;
+      color: #000;
+      text-align: right;
+    }
+
+    .close {
+      color: #aaa;
+      float: left;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover { color: #000; }
+
   </style>
 </head>
 <body>
@@ -197,12 +223,12 @@
     <a class="email-button" href="mailto:sirvanprofessor@gmail.com">📧 EMAIL ADDRESS </a>
 
     <div class="projects">
-      <div class="project-card" onclick="window.open('https://github.com/sirvanprofessor-beep/THATSCARDINAL', '_blank')">
+      <div class="project-card"> 
         <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/chaplin.webp" alt="Project 1">
         <h3>تاریخ سینما</h3>
         <p>سینما و تاریخ</p>
       </div>
-      <div class="project-card" onclick="window.open('https://github.com/sirvanprofessor-beep/THATSCARDINAL', '_blank')">
+      <div class="project-card">
         <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="Project 2">
         <h3>تاریخ نگاری</h3>
         <p>نگاهی دقیق به تاریخ</p>
@@ -221,30 +247,30 @@
     </div>
   </div>
 
-  <!-- English -->
-  <div class="container" id="en-content" style="display:none; direction:ltr; text-align:center;">
+  <!-- انگلیسی -->
+  <div class="container" id="en-content" style="display:none;">
     <div class="slogan">Woman, Life, Freedom</div>
     <img class="profile-img" src="profile.webp" alt="PROFESSOR">
     <div class="professor-title">Professor Cardinal</div>
     <h1>Video & Photo Editor</h1>
     <h2>To infinity and beyond</h2>
-    <a class="email-button" href="mailto:sirvanprofessor@gmail.com">📧 Email Me</a>
+    <a class="email-button" href="mailto:sirvanprofessor@gmail.com">📧 EMAIL ADDRESS </a>
 
     <div class="projects">
-      <div class="project-card" onclick="window.open('https://github.com/sirvanprofessor-beep/THATSCARDINAL', '_blank')">
+      <div class="project-card"> 
         <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/chaplin.webp" alt="Project 1">
-        <h3>History of Cinema</h3>
-        <p>History and Cinema</p>
+        <h3>Cinema History</h3>
+        <p>Cinema and history</p>
       </div>
-      <div class="project-card" onclick="window.open('https://github.com/sirvanprofessor-beep/THATSCARDINAL', '_blank')">
+      <div class="project-card">
         <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="Project 2">
-        <h3>Historical Analysis</h3>
-        <p>A closer look at history</p>
+        <h3>Historiography</h3>
+        <p>A detailed look at history</p>
       </div>
       <div class="project-card">
         <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project2.webp" alt="Project 3">
-        <h3>Movie Poster</h3>
-        <p>Movie poster design</p>
+        <h3>Movie Posters</h3>
+        <p>Creative movie poster designs</p>
       </div>
     </div>
 
@@ -255,7 +281,58 @@
     </div>
   </div>
 
+  <!-- پاپ‌آپ‌ها فارسی -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="modal1">&times;</span>
+      <h3>تاریخ سینما</h3>
+      <p>سینما هنر و صنعت فیلم‌سازی از ابتدا تا امروز. این پروژه بررسی مهم‌ترین رویدادهای سینمایی است.</p>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="modal2">&times;</span>
+      <h3>تاریخ نگاری</h3>
+      <p>تحلیل دقیق رویدادهای تاریخی و ثبت آن‌ها برای مطالعه نسل‌های آینده.</p>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="modal3">&times;</span>
+      <h3>پوستر سینمایی</h3>
+      <p>طراحی پوسترهای خلاقانه و حرفه‌ای برای فیلم‌های سینمایی محبوب.</p>
+    </div>
+  </div>
+
+  <!-- پاپ‌آپ‌ها انگلیسی -->
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="modal4">&times;</span>
+      <h3>Cinema History</h3>
+      <p>Cinema as an art and industry from the beginning to today. This project covers the most important events in cinema.</p>
+    </div>
+  </div>
+
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="modal5">&times;</span>
+      <h3>Historiography</h3>
+      <p>Analyzing historical events in detail and documenting them for future generations.</p>
+    </div>
+  </div>
+
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <span class="close" data-modal="modal6">&times;</span>
+      <h3>Movie Posters</h3>
+      <p>Designing creative and professional posters for popular movies.</p>
+    </div>
+  </div>
+
   <script>
+    // سوئیچ زبان
     const faBtn = document.getElementById('fa-btn');
     const enBtn = document.getElementById('en-btn');
     const faContent = document.getElementById('fa-content');
@@ -277,7 +354,34 @@
     faBtn.addEventListener('click', () => setLanguage('fa'));
     enBtn.addEventListener('click', () => setLanguage('en'));
     setLanguage(localStorage.getItem('lang') || 'fa');
-  </script>
 
+    // پاپ‌آپ‌ها فارسی
+    const faModals = [document.getElementById('modal1'), document.getElementById('modal2'), document.getElementById('modal3')];
+    const faProjects = document.querySelectorAll('#fa-content .project-card');
+    faProjects.forEach((card, index) => {
+      card.addEventListener('click', () => { faModals[index].style.display = 'block'; });
+    });
+
+    // پاپ‌آپ‌ها انگلیسی
+    const enModals = [document.getElementById('modal4'), document.getElementById('modal5'), document.getElementById('modal6')];
+    const enProjects = document.querySelectorAll('#en-content .project-card');
+    enProjects.forEach((card, index) => {
+      card.addEventListener('click', () => { enModals[index].style.display = 'block'; });
+    });
+
+    // بستن پاپ‌آپ‌ها
+    const closeButtons = document.querySelectorAll('.close');
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const modalId = btn.getAttribute('data-modal');
+        document.getElementById(modalId).style.display = 'none';
+      });
+    });
+
+    // بستن پاپ‌آپ با کلیک بیرون
+    window.addEventListener('click', (e) => {
+      [...faModals, ...enModals].forEach(modal => { if (e.target === modal) modal.style.display = 'none'; });
+    });
+  </script>
 </body>
 </html>

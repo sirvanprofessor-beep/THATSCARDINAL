@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CARDINAL PROFESSOR</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- فونت نستعلیق برای فارسی -->
+  <link href="https://cdn.font-store.ir/yekan-fonts/irannastaliq.css" rel="stylesheet" type="text/css" />
+  <!-- فونت خاص انگلیسی برای Professor Cardinal -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&family=Gandom&display=swap');
 
@@ -47,12 +53,24 @@
       object-fit: cover;
     }
 
-    .slogan {
-      font-family: "Gandom", cursive;
-      font-size: 30px;
-      color: #fff;
-      text-shadow: 0 0 12px rgba(255,255,255,0.6);
+    /* ✅ نوشته زیر عکس */
+    .professor-title {
+      font-family: "Cinzel Decorative", serif;
+      font-size: 26px;
+      color: #ffd700;
+      text-shadow: 0 0 10px rgba(255,215,0,0.5);
       margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    /* ✅ فونت نستعلیق برای شعار فارسی */
+    .slogan {
+      font-family: "IranNastaliq", "Gandom", cursive;
+      font-size: 40px;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(255,255,255,0.6);
+      margin-bottom: 20px;
+      line-height: 1.8;
     }
 
     h1 { margin: 10px 0; font-size: 26px; }
@@ -176,6 +194,7 @@
   <div class="container" id="fa-content">
     <div class="slogan">زن، زندگی، آزادی</div>
     <img class="profile-img" src="IMG_4716.webp" alt="PROFESSOR">
+    <div class="professor-title">Professor Cardinal</div>
     <h1>ادیتور ویدیو و عکس</h1>
     <h2>به سوی بینهایت و فراتر از آن</h2>
 
@@ -184,14 +203,12 @@
     <div class="section-title">پروژه‌ها</div>
     <div class="projects">
       <div class="project-card" onclick="window.open('https://github.com/sirvanprofessor-beep/THATSCARDINAL', '_blank')">
-        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp
-" alt="Project 1">
+        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="Project 1">
         <h3>تاریخ نگاری</h3>
         <p>نگاهی دقیق به تاریخ</p>
       </div>
       <div class="project-card">
-        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project2.webp
-" alt="Project 2">
+        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project2.webp" alt="Project 2">
         <h3>پوستر سینمایی</h3>
         <p>طراحی پوستر فیلم های سینمایی</p>
       </div>
@@ -208,6 +225,7 @@
   <div class="container" id="en-content" style="display:none; direction:ltr; text-align:center;">
     <div class="slogan">Woman, Life, Freedom</div>
     <img class="profile-img" src="IMG_4716.webp" alt="PROFESSOR">
+    <div class="professor-title">Professor Cardinal</div>
     <h1>Video & Photo Editor</h1>
     <h2>To infinity and beyond</h2>
 
@@ -215,18 +233,17 @@
 
     <div class="section-title">Projects</div>
     <div class="projects">
-  <div class="project-card" onclick="window.open('https://github.com/sirvanprofessor-beep/THATSCARDINAL', '_blank')">
-    <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="Project 1">
-    <h3>Project 1</h3>
-    <p>A closer look at history</p>
-  </div>
-  <div class="project-card">
-    <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project2.webp" alt="Project 2">
-    <h3>Project 2</h3>
-    <p>Movie poster design</p>
-  </div>
-</div>
-
+      <div class="project-card" onclick="window.open('https://github.com/sirvanprofessor-beep/THATSCARDINAL', '_blank')">
+        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="Project 1">
+        <h3>Project 1</h3>
+        <p>A closer look at history</p>
+      </div>
+      <div class="project-card">
+        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project2.webp" alt="Project 2">
+        <h3>Project 2</h3>
+        <p>Movie poster design</p>
+      </div>
+    </div>
 
     <div class="social-icons">
       <a href="https://www.instagram.com/thatscardinal" target="_blank"><i class="fab fa-instagram"></i></a>

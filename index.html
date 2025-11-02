@@ -17,8 +17,6 @@
       margin: 0;
       padding: 0;
       font-family: "Vazirmatn", sans-serif;
-      background: url('background2.webp') no-repeat center center fixed;
-      background-size: cover;
       color: #fff;
       display: flex;
       justify-content: center;
@@ -26,6 +24,10 @@
       min-height: 100vh;
       padding-top: 50px;
       overflow-x: hidden;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      transition: background 0.5s ease-in-out;
     }
 
     .container {
@@ -202,7 +204,6 @@
     }
 
     .close:hover { color: #000; }
-
   </style>
 </head>
 <body>
@@ -281,57 +282,16 @@
     </div>
   </div>
 
-  <!-- پاپ‌آپ‌ها فارسی -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <span class="close" data-modal="modal1">&times;</span>
-      <h3>تاریخ سینما</h3>
-      <p>سینما هنر و صنعت فیلم‌سازی از ابتدا تا امروز. این پروژه بررسی مهم‌ترین رویدادهای سینمایی است.</p>
-    </div>
-  </div>
-
-  <div id="modal2" class="modal">
-    <div class="modal-content">
-      <span class="close" data-modal="modal2">&times;</span>
-      <h3>تاریخ نگاری</h3>
-      <p>تحلیل دقیق رویدادهای تاریخی و ثبت آن‌ها برای مطالعه نسل‌های آینده.</p>
-    </div>
-  </div>
-
-  <div id="modal3" class="modal">
-    <div class="modal-content">
-      <span class="close" data-modal="modal3">&times;</span>
-      <h3>پوستر سینمایی</h3>
-      <p>طراحی پوسترهای خلاقانه و حرفه‌ای برای فیلم‌های سینمایی محبوب.</p>
-    </div>
-  </div>
-
-  <!-- پاپ‌آپ‌ها انگلیسی -->
-  <div id="modal4" class="modal">
-    <div class="modal-content">
-      <span class="close" data-modal="modal4">&times;</span>
-      <h3>Cinema History</h3>
-      <p>Cinema as an art and industry from the beginning to today. This project covers the most important events in cinema.</p>
-    </div>
-  </div>
-
-  <div id="modal5" class="modal">
-    <div class="modal-content">
-      <span class="close" data-modal="modal5">&times;</span>
-      <h3>Historiography</h3>
-      <p>Analyzing historical events in detail and documenting them for future generations.</p>
-    </div>
-  </div>
-
-  <div id="modal6" class="modal">
-    <div class="modal-content">
-      <span class="close" data-modal="modal6">&times;</span>
-      <h3>Movie Posters</h3>
-      <p>Designing creative and professional posters for popular movies.</p>
-    </div>
-  </div>
-
+  <!-- اسکریپت‌ها -->
   <script>
+    // 💫 بک‌گراند تصادفی
+    const backgrounds = ['background2.webp', 'background5.webp']; // مسیر تصاویر
+    const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.style.background = `url('${randomBg}') no-repeat center center fixed`;
+      document.body.style.backgroundSize = 'cover';
+    });
+
     // سوئیچ زبان
     const faBtn = document.getElementById('fa-btn');
     const enBtn = document.getElementById('en-btn');

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Estedad:wght@700&display=swap');
 
     body {
       font-family: "Vazirmatn", sans-serif;
@@ -19,6 +20,32 @@
       align-items: flex-start;
       min-height: 100vh;
       padding-top: 50px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* متن زن، زندگی، آزادی در پس‌زمینه */
+    body::before {
+      content: "زن، زندگی، آزادی";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-10deg);
+      font-family: "Estedad", "Vazirmatn", sans-serif;
+      font-size: 120px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.07);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      text-shadow: 0 0 30px rgba(255,255,255,0.1);
+      animation: glow 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 20px rgba(255,255,255,0.1); }
+      to { text-shadow: 0 0 50px rgba(255,255,255,0.25); }
     }
 
     .container {
@@ -31,6 +58,7 @@
       padding: 30px;
       text-align: center;
       transition: transform 0.3s;
+      z-index: 1;
     }
 
     .container:hover {
@@ -43,6 +71,7 @@
       border-radius: 50%;
       border: 3px solid #fff;
       margin-bottom: 15px;
+      object-fit: cover;
     }
 
     .flag-img {
@@ -143,6 +172,14 @@
       right: 20px;
       display: flex;
       gap: 10px;
+      z-index: 2;
+    }
+
+    /* انگلیسی وسط‌چین */
+    #en-content {
+      display: none;
+      direction: ltr;
+      text-align: center;
     }
 
     /* Responsive */
@@ -190,7 +227,7 @@
     </div>
   </div>
 
-  <div class="container" id="en-content" style="display:none; direction:ltr; text-align:left;">
+  <div class="container" id="en-content">
     <img class="profile-img" src="IMG_4716.webp" alt="PROFESSOR">
     <h1>Video & Photo Editor</h1>
     <h2>To infinity and beyond</h2>
@@ -225,15 +262,22 @@
     const faContent = document.getElementById('fa-content');
     const enContent = document.getElementById('en-content');
 
-    faBtn.addEventListener('click', () => {
-      faContent.style.display = 'block';
-      enContent.style.display = 'none';
-    });
+    function setLanguage(lang) {
+      if (lang === 'fa') {
+        faContent.style.display = 'block';
+        enContent.style.display = 'none';
+      } else {
+        faContent.style.display = 'none';
+        enContent.style.display = 'block';
+      }
+      localStorage.setItem('lang', lang);
+    }
 
-    enBtn.addEventListener('click', () => {
-      faContent.style.display = 'none';
-      enContent.style.display = 'block';
-    });
+    faBtn.addEventListener('click', () => setLanguage('fa'));
+    enBtn.addEventListener('click', () => setLanguage('en'));
+
+    const savedLang = localStorage.getItem('lang') || 'fa';
+    setLanguage(savedLang);
   </script>
 </body>
 </html>

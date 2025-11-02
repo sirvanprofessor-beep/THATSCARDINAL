@@ -24,7 +24,7 @@
       overflow-x: hidden;
     }
 
-    /* متن زن، زندگی، آزادی در پس‌زمینه */
+    /* متن زن، زندگی، آزادی */
     body::before {
       content: "زن، زندگی، آزادی";
       position: fixed;
@@ -94,11 +94,6 @@
       color: #ffd700;
     }
 
-    p {
-      font-size: 16px;
-      margin: 10px 0;
-    }
-
     .section-title {
       font-size: 22px;
       margin: 20px 0 10px 0;
@@ -118,6 +113,7 @@
       border-radius: 10px;
       min-width: 100px;
       transition: transform 0.3s;
+      cursor: pointer;
     }
 
     .project:hover, .skill:hover {
@@ -182,12 +178,63 @@
       text-align: center;
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .projects, .skills {
-        flex-direction: column;
-        align-items: center;
-      }
+    /* پنجره پاپ‌آپ پروژه */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+      backdrop-filter: blur(10px);
+      color: #fff;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      position: relative;
+      animation: pop 0.3s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      border: 2px solid #fff;
+    }
+
+    .modal-content h3 {
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .close:hover {
+      color: #ffd700;
     }
   </style>
 </head>
@@ -198,6 +245,7 @@
     <img src="Flag_of_the_United_Kingdom_(3-5).svg.webp" id="en-btn" title="English" class="flag-img">
   </div>
 
+  <!-- 🇮🇷 فارسی -->
   <div class="container" id="fa-content">
     <img class="profile-img" src="IMG_4716.webp" alt="PROFESSOR">
     <h1>ادیتور ویدیو و عکس</h1>
@@ -207,9 +255,9 @@
 
     <div class="section-title">پروژه‌ها</div>
     <div class="projects">
-      <div class="project">پروژه ۱</div>
-      <div class="project">پروژه ۲</div>
-      <div class="project">پروژه ۳</div>
+      <div class="project" data-project="1">پروژه ۱</div>
+      <div class="project" data-project="2">پروژه ۲</div>
+      <div class="project" data-project="3">پروژه ۳</div>
     </div>
 
     <div class="section-title">مهارت‌ها</div>
@@ -221,12 +269,13 @@
     </div>
 
     <div class="social-icons">
-      <a href="https://www.instagram.com/thatscardinal?igsh=em5rMGRnNzM0eGNo&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.instagram.com/thatscardinal" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://t.me/onesecondloop" target="_blank"><i class="fab fa-telegram-plane"></i></a>
       <a href="https://github.com/sirvanprofessor-beep" target="_blank"><i class="fab fa-github"></i></a>
     </div>
   </div>
 
+  <!-- 🇬🇧 English -->
   <div class="container" id="en-content">
     <img class="profile-img" src="IMG_4716.webp" alt="PROFESSOR">
     <h1>Video & Photo Editor</h1>
@@ -236,9 +285,9 @@
 
     <div class="section-title">Projects</div>
     <div class="projects">
-      <div class="project">Project 1</div>
-      <div class="project">Project 2</div>
-      <div class="project">Project 3</div>
+      <div class="project" data-project="1">Project 1</div>
+      <div class="project" data-project="2">Project 2</div>
+      <div class="project" data-project="3">Project 3</div>
     </div>
 
     <div class="section-title">Skills</div>
@@ -250,9 +299,19 @@
     </div>
 
     <div class="social-icons">
-      <a href="https://www.instagram.com/thatscardinal?igsh=em5rMGRnNzM0eGNo&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.instagram.com/thatscardinal" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://t.me/onesecondloop" target="_blank"><i class="fab fa-telegram-plane"></i></a>
       <a href="https://github.com/sirvanprofessor-beep" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+  </div>
+
+  <!-- Popup modal -->
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="project-img" src="" alt="project image">
+      <h3 id="project-title"></h3>
+      <p id="project-desc"></p>
     </div>
   </div>
 
@@ -278,6 +337,67 @@
 
     const savedLang = localStorage.getItem('lang') || 'fa';
     setLanguage(savedLang);
+
+    // پاپ‌آپ پروژه‌ها دو زبانه
+    const projectData = {
+      fa: {
+        1: {
+          title: "پروژه ۱ - تحلیل تصویری",
+          img: "file:///C:/Users/teymourie/Downloads/hitler%20and%20nitche.webp",
+          desc: "در این پروژه ترکیب تاریخی بین نیچه و هیتلر از نظر زیبایی‌شناسی و مفهومی مورد بررسی تصویری قرار گرفته است."
+        },
+        2: {
+          title: "پروژه ۲ - طراحی پوستر تبلیغاتی",
+          img: "project2.jpg",
+          desc: "پوستر حرفه‌ای با تمرکز بر رنگ‌های برند و پیام احساسی برای کمپین دیجیتال."
+        },
+        3: {
+          title: "پروژه ۳ - ویدیو برای معرفی برند",
+          img: "project3.jpg",
+          desc: "ساخت تیزر کوتاه برای برند با ترکیب انیمیشن متن و موسیقی پویا."
+        }
+      },
+      en: {
+        1: {
+          title: "Project 1 - Visual Analysis",
+          img: "file:///C:/Users/teymourie/Downloads/hitler%20and%20nitche.webp",
+          desc: "A conceptual visual composition exploring the historical aesthetic link between Nietzsche and Hitler."
+        },
+        2: {
+          title: "Project 2 - Poster Design",
+          img: "project2.jpg",
+          desc: "A creative poster designed for a digital campaign with brand color balance and emotional messaging."
+        },
+        3: {
+          title: "Project 3 - Brand Intro Video",
+          img: "project3.jpg",
+          desc: "A short teaser video combining kinetic typography and vibrant music for brand presentation."
+        }
+      }
+    };
+
+    const modal = document.getElementById("project-modal");
+    const modalImg = document.getElementById("project-img");
+    const modalTitle = document.getElementById("project-title");
+    const modalDesc = document.getElementById("project-desc");
+    const closeBtn = document.querySelector(".close");
+
+    document.querySelectorAll(".project").forEach(proj => {
+      proj.addEventListener("click", () => {
+        const id = proj.getAttribute("data-project");
+        const lang = faContent.style.display === 'block' ? 'fa' : 'en';
+        const data = projectData[lang][id];
+        modalImg.src = data.img;
+        modalTitle.textContent = data.title;
+        modalDesc.textContent = data.desc;
+        modal.style.display = "flex";
+      });
+    });
+
+    closeBtn.addEventListener("click", () => modal.style.display = "none");
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    });
   </script>
 </body>
 </html>

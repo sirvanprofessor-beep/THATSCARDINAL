@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> CARDINAL / PROFESSOR</title>
+  <title>صفحه شخصی PROFESSOR</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Estedad:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&family=Estedad:wght@700&display=swap');
 
     body {
       font-family: "Vazirmatn", sans-serif;
@@ -20,32 +19,7 @@
       align-items: flex-start;
       min-height: 100vh;
       padding-top: 50px;
-      position: relative;
       overflow-x: hidden;
-    }
-
-    /* متن زن، زندگی، آزادی */
-    body::before {
-      content: "زن، زندگی، آزادی";
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-10deg);
-      font-family: "Estedad", "Vazirmatn", sans-serif;
-      font-size: 120px;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.07);
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
-      z-index: 0;
-      text-shadow: 0 0 30px rgba(255,255,255,0.1);
-      animation: glow 6s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 20px rgba(255,255,255,0.1); }
-      to { text-shadow: 0 0 50px rgba(255,255,255,0.25); }
     }
 
     .container {
@@ -58,20 +32,52 @@
       padding: 30px;
       text-align: center;
       transition: transform 0.3s;
+      position: relative;
       z-index: 1;
     }
 
-    .container:hover {
-      transform: scale(1.02);
-    }
+    .container:hover { transform: scale(1.02); }
 
     .profile-img {
       width: 150px;
       height: 150px;
       border-radius: 50%;
       border: 3px solid #fff;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       object-fit: cover;
+    }
+
+    .slogan {
+      font-family: "Estedad", sans-serif;
+      font-size: 28px;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(255,255,255,0.4);
+      margin-bottom: 10px;
+    }
+
+    h1 { margin: 10px 0; font-size: 26px; }
+    h2 { margin: 10px 0 20px 0; font-size: 20px; color: #ffd700; }
+
+    .email-button {
+      display: inline-block;
+      margin: 15px 0;
+      padding: 10px 20px;
+      background: #ffd700;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .email-button:hover { background: #e5c100; }
+
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
     }
 
     .flag-img {
@@ -82,43 +88,42 @@
       border-radius: 3px;
     }
 
-    h1 {
-      margin: 10px 0;
-      font-size: 28px;
-    }
-
-    h2 {
-      margin: 10px 0 20px 0;
-      font-size: 20px;
-      font-weight: normal;
-      color: #ffd700;
-    }
-
-    .section-title {
-      font-size: 22px;
-      margin: 20px 0 10px 0;
-      color: #ffd700;
-    }
-
-    .projects, .skills {
+    /* --- کارت‌های پروژه --- */
+    .projects {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      overflow-x: auto;
       gap: 15px;
+      padding: 15px 0;
+      scroll-behavior: smooth;
     }
 
-    .project, .skill {
-      background: rgba(255,255,255,0.2);
-      padding: 10px 20px;
-      border-radius: 10px;
-      min-width: 100px;
-      transition: transform 0.3s;
+    .project-card {
+      flex: 0 0 250px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 15px;
+      padding: 10px;
+      text-align: center;
+      transition: 0.3s;
       cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
-    .project:hover, .skill:hover {
-      transform: scale(1.1);
-      background: rgba(255,255,255,0.35);
+    .project-card:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.25);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .project-card h3 {
+      font-size: 18px;
+      color: #ffd700;
     }
 
     .social-icons {
@@ -146,39 +151,7 @@
       color: #000;
     }
 
-    .email-button {
-      display: inline-block;
-      margin: 15px 0;
-      padding: 10px 20px;
-      background: #ffd700;
-      color: #000;
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .email-button:hover {
-      background: #e5c100;
-    }
-
-    .language-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      gap: 10px;
-      z-index: 2;
-    }
-
-    /* انگلیسی وسط‌چین */
-    #en-content {
-      display: none;
-      direction: ltr;
-      text-align: center;
-    }
-
-    /* پنجره پاپ‌آپ پروژه */
+    /* --- پاپ‌آپ پروژه --- */
     .modal {
       display: none;
       position: fixed;
@@ -201,7 +174,6 @@
       width: 90%;
       backdrop-filter: blur(10px);
       color: #fff;
-      box-shadow: 0 0 30px rgba(0,0,0,0.4);
       position: relative;
       animation: pop 0.3s ease;
     }
@@ -218,11 +190,6 @@
       border: 2px solid #fff;
     }
 
-    .modal-content h3 {
-      color: #ffd700;
-      margin-bottom: 10px;
-    }
-
     .close {
       position: absolute;
       top: 10px;
@@ -230,23 +197,24 @@
       font-size: 24px;
       cursor: pointer;
       color: #fff;
-      transition: 0.3s;
     }
 
-    .close:hover {
-      color: #ffd700;
+    .close:hover { color: #ffd700; }
+
+    @media (max-width: 600px) {
+      .projects { flex-direction: row; }
     }
   </style>
 </head>
 <body>
-  <!-- Language Switch -->
   <div class="language-switch">
     <img src="Flag_of_iran_standard.svg.webp" id="fa-btn" title="فارسی" class="flag-img">
     <img src="Flag_of_the_United_Kingdom_(3-5).svg.webp" id="en-btn" title="English" class="flag-img">
   </div>
 
-  <!-- 🇮🇷 فارسی -->
+  <!-- فارسی -->
   <div class="container" id="fa-content">
+    <div class="slogan">زن، زندگی، آزادی</div>
     <img class="profile-img" src="IMG_4716.webp" alt="PROFESSOR">
     <h1>ادیتور ویدیو و عکس</h1>
     <h2>به سوی بینهایت و فراتر از آن</h2>
@@ -255,17 +223,18 @@
 
     <div class="section-title">پروژه‌ها</div>
     <div class="projects">
-      <div class="project" data-project="1">پروژه ۱</div>
-      <div class="project" data-project="2">پروژه ۲</div>
-      <div class="project" data-project="3">پروژه ۳</div>
-    </div>
-
-    <div class="section-title">مهارت‌ها</div>
-    <div class="skills">
-      <div class="skill">ادیت ویدیو</div>
-      <div class="skill">ادیت عکس</div>
-      <div class="skill">Adobe Premiere</div>
-      <div class="skill">Photoshop</div>
+      <div class="project-card" data-project="1">
+        <img src="hitler and nitche.webp" alt="project1">
+        <h3>THATSCARDINAL</h3>
+      </div>
+      <div class="project-card" data-project="2">
+        <img src="project2.jpg" alt="project2">
+        <h3>پوستر تبلیغاتی</h3>
+      </div>
+      <div class="project-card" data-project="3">
+        <img src="project3.jpg" alt="project3">
+        <h3>تیزر برند</h3>
+      </div>
     </div>
 
     <div class="social-icons">
@@ -275,8 +244,9 @@
     </div>
   </div>
 
-  <!-- 🇬🇧 English -->
-  <div class="container" id="en-content">
+  <!-- English -->
+  <div class="container" id="en-content" style="display:none; direction:ltr; text-align:center;">
+    <div class="slogan">Woman, Life, Freedom</div>
     <img class="profile-img" src="IMG_4716.webp" alt="PROFESSOR">
     <h1>Video & Photo Editor</h1>
     <h2>To infinity and beyond</h2>
@@ -285,17 +255,18 @@
 
     <div class="section-title">Projects</div>
     <div class="projects">
-      <div class="project" data-project="1">Project 1</div>
-      <div class="project" data-project="2">Project 2</div>
-      <div class="project" data-project="3">Project 3</div>
-    </div>
-
-    <div class="section-title">Skills</div>
-    <div class="skills">
-      <div class="skill">Video Editing</div>
-      <div class="skill">Photo Editing</div>
-      <div class="skill">Adobe Premiere</div>
-      <div class="skill">Photoshop</div>
+      <div class="project-card" data-project="1">
+        <img src="hitler and nitche.webp" alt="project1">
+        <h3>THATSCARDINAL</h3>
+      </div>
+      <div class="project-card" data-project="2">
+        <img src="project2.jpg" alt="project2">
+        <h3>Poster Design</h3>
+      </div>
+      <div class="project-card" data-project="3">
+        <img src="project3.jpg" alt="project3">
+        <h3>Brand Teaser</h3>
+      </div>
     </div>
 
     <div class="social-icons">
@@ -305,13 +276,14 @@
     </div>
   </div>
 
-  <!-- Popup modal -->
+  <!-- پاپ‌آپ -->
   <div id="project-modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <img id="project-img" src="" alt="project image">
       <h3 id="project-title"></h3>
       <p id="project-desc"></p>
+      <a id="project-link" href="#" target="_blank" style="color:#ffd700; text-decoration:none;">مشاهده پروژه در GitHub</a>
     </div>
   </div>
 
@@ -334,45 +306,28 @@
 
     faBtn.addEventListener('click', () => setLanguage('fa'));
     enBtn.addEventListener('click', () => setLanguage('en'));
-
     const savedLang = localStorage.getItem('lang') || 'fa';
     setLanguage(savedLang);
 
-    // پاپ‌آپ پروژه‌ها دو زبانه
+    // پروژه‌ها
     const projectData = {
-      fa: {
-        1: {
-          title: "پروژه ۱ - تحلیل تصویری",
-          img: "file:///C:/Users/teymourie/Downloads/hitler%20and%20nitche.webp",
-          desc: "در این پروژه ترکیب تاریخی بین نیچه و هیتلر از نظر زیبایی‌شناسی و مفهومی مورد بررسی تصویری قرار گرفته است."
-        },
-        2: {
-          title: "پروژه ۲ - طراحی پوستر تبلیغاتی",
-          img: "project2.jpg",
-          desc: "پوستر حرفه‌ای با تمرکز بر رنگ‌های برند و پیام احساسی برای کمپین دیجیتال."
-        },
-        3: {
-          title: "پروژه ۳ - ویدیو برای معرفی برند",
-          img: "project3.jpg",
-          desc: "ساخت تیزر کوتاه برای برند با ترکیب انیمیشن متن و موسیقی پویا."
-        }
+      1: {
+        title: "THATSCARDINAL",
+        img: "hitler and nitche.webp",
+        desc: "پروژه‌ی ویرایش ویدیو با ترکیب فلسفه نیچه و تصویرسازی هنری.",
+        link: "https://github.com/sirvanprofessor-beep/THATSCARDINAL"
       },
-      en: {
-        1: {
-          title: "Project 1 - Visual Analysis",
-          img: "file:///C:/Users/teymourie/Downloads/hitler%20and%20nitche.webp",
-          desc: "A conceptual visual composition exploring the historical aesthetic link between Nietzsche and Hitler."
-        },
-        2: {
-          title: "Project 2 - Poster Design",
-          img: "project2.jpg",
-          desc: "A creative poster designed for a digital campaign with brand color balance and emotional messaging."
-        },
-        3: {
-          title: "Project 3 - Brand Intro Video",
-          img: "project3.jpg",
-          desc: "A short teaser video combining kinetic typography and vibrant music for brand presentation."
-        }
+      2: {
+        title: "پوستر تبلیغاتی / Poster Design",
+        img: "project2.jpg",
+        desc: "طراحی پوستر برای برند با استفاده از Photoshop و رنگ‌های مدرن.",
+        link: "#"
+      },
+      3: {
+        title: "تیزر برند / Brand Teaser",
+        img: "project3.jpg",
+        desc: "ساخت تیزر ویدئویی با ریتم و جلوه‌های ویژه برای معرفی برند.",
+        link: "#"
       }
     };
 
@@ -380,24 +335,23 @@
     const modalImg = document.getElementById("project-img");
     const modalTitle = document.getElementById("project-title");
     const modalDesc = document.getElementById("project-desc");
+    const modalLink = document.getElementById("project-link");
     const closeBtn = document.querySelector(".close");
 
-    document.querySelectorAll(".project").forEach(proj => {
-      proj.addEventListener("click", () => {
-        const id = proj.getAttribute("data-project");
-        const lang = faContent.style.display === 'block' ? 'fa' : 'en';
-        const data = projectData[lang][id];
+    document.querySelectorAll(".project-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const id = card.getAttribute("data-project");
+        const data = projectData[id];
         modalImg.src = data.img;
         modalTitle.textContent = data.title;
         modalDesc.textContent = data.desc;
+        modalLink.href = data.link;
         modal.style.display = "flex";
       });
     });
 
     closeBtn.addEventListener("click", () => modal.style.display = "none");
-    window.addEventListener("click", (e) => {
-      if (e.target === modal) modal.style.display = "none";
-    });
+    window.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
   </script>
 </body>
 </html>

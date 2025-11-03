@@ -94,6 +94,14 @@
   const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
   let current = 0;
   const body = document.body;
+// ====== Background rotation with fade effect ======
+const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
+let current = 0;
+const body = document.body;
+
+// 👇 این بخش تصویر اولیه رو برمی‌گردونه
+body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
+body.style.backgroundSize = 'cover';
 
   const overlay = document.createElement('div');
   overlay.style.position = 'fixed';

@@ -87,38 +87,42 @@
   border-radius: 10px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.3);
 }
-const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
-let current = 0;
-const body = document.body;
+</style>
 
-// یه لایه بک‌گراند اضافه کن
-const overlay = document.createElement('div');
-overlay.style.position = 'fixed';
-overlay.style.top = 0;
-overlay.style.left = 0;
-overlay.style.width = '100%';
-overlay.style.height = '100%';
-overlay.style.zIndex = '-1';
-overlay.style.backgroundSize = 'cover';
-overlay.style.backgroundPosition = 'center';
-overlay.style.transition = 'opacity 2s ease-in-out';
-overlay.style.opacity = 0;
-document.body.appendChild(overlay);
+<script>
+  // اینجا جاوااسکریپت ترنزیشن بک‌گراند
+  const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
+  let current = 0;
+  const body = document.body;
 
-body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
-body.style.backgroundSize = 'cover';
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = 0;
+  overlay.style.left = 0;
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.zIndex = '-1';
+  overlay.style.backgroundSize = 'cover';
+  overlay.style.backgroundPosition = 'center';
+  overlay.style.transition = 'opacity 2s ease-in-out';
+  overlay.style.opacity = 0;
+  document.body.appendChild(overlay);
 
-setInterval(() => {
-  const next = (current + 1) % backgrounds.length;
-  overlay.style.backgroundImage = `url('${backgrounds[next]}')`;
-  overlay.style.opacity = 1;
+  body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
+  body.style.backgroundSize = 'cover';
 
-  setTimeout(() => {
-    body.style.backgroundImage = `url('${backgrounds[next]}')`;
-    overlay.style.opacity = 0;
-    current = next;
-  }, 1800); // مدت فید
-}, 30000);
+  setInterval(() => {
+    const next = (current + 1) % backgrounds.length;
+    overlay.style.backgroundImage = `url('${backgrounds[next]}')`;
+    overlay.style.opacity = 1;
+
+    setTimeout(() => {
+      body.style.backgroundImage = `url('${backgrounds[next]}')`;
+      overlay.style.opacity = 0;
+      current = next;
+    }, 1800);
+  }, 30000);
+</script>
 
 
   </style>
@@ -305,25 +309,6 @@ Such distortions remind us that no idea should ever be understood apart from its
   </div>
 
   <script>
-   // ====== Background rotation ======
-const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
-let currentBg = 0;
-
-// تابع تغییر بک‌گراند
-function setBackground(index) {
-  document.body.style.background = `url('${backgrounds[index]}') no-repeat center center fixed`;
-  document.body.style.backgroundSize = 'cover';
-}
-
-// تنظیم بک‌گراند اولیه به‌صورت تصادفی
-currentBg = Math.floor(Math.random() * backgrounds.length);
-setBackground(currentBg);
-
-// تغییر خودکار هر 30 ثانیه
-setInterval(() => {
-  currentBg = (currentBg + 1) % backgrounds.length;
-  setBackground(currentBg);
-}, 30000);
 
 
     // ====== Language switch logic (persist in localStorage) ======

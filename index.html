@@ -87,6 +87,38 @@
   border-radius: 10px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.3);
 }
+const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
+let current = 0;
+const body = document.body;
+
+// یه لایه بک‌گراند اضافه کن
+const overlay = document.createElement('div');
+overlay.style.position = 'fixed';
+overlay.style.top = 0;
+overlay.style.left = 0;
+overlay.style.width = '100%';
+overlay.style.height = '100%';
+overlay.style.zIndex = '-1';
+overlay.style.backgroundSize = 'cover';
+overlay.style.backgroundPosition = 'center';
+overlay.style.transition = 'opacity 2s ease-in-out';
+overlay.style.opacity = 0;
+document.body.appendChild(overlay);
+
+body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
+body.style.backgroundSize = 'cover';
+
+setInterval(() => {
+  const next = (current + 1) % backgrounds.length;
+  overlay.style.backgroundImage = `url('${backgrounds[next]}')`;
+  overlay.style.opacity = 1;
+
+  setTimeout(() => {
+    body.style.backgroundImage = `url('${backgrounds[next]}')`;
+    overlay.style.opacity = 0;
+    current = next;
+  }, 1800); // مدت فید
+}, 30000);
 
 
   </style>

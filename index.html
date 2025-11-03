@@ -89,49 +89,7 @@
 }
 </style>
 
-<script>
-  // ====== Background rotation with fade effect ======
-const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
-let current = 0;
-const body = document.body;
 
-  // اینجا جاوااسکریپت ترنزیشن بک‌گراند
-  const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
-  let current = 0;
-  const body = document.body;
-
-// 👇 این بخش تصویر اولیه رو برمی‌گردونه
-body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
-body.style.backgroundSize = 'cover';
-
-  const overlay = document.createElement('div');
-  overlay.style.position = 'fixed';
-  overlay.style.top = 0;
-  overlay.style.left = 0;
-  overlay.style.width = '100%';
-  overlay.style.height = '100%';
-  overlay.style.zIndex = '-1';
-  overlay.style.backgroundSize = 'cover';
-  overlay.style.backgroundPosition = 'center';
-  overlay.style.transition = 'opacity 2s ease-in-out';
-  overlay.style.opacity = 0;
-  document.body.appendChild(overlay);
-
-  body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
-  body.style.backgroundSize = 'cover';
-
-  setInterval(() => {
-    const next = (current + 1) % backgrounds.length;
-    overlay.style.backgroundImage = `url('${backgrounds[next]}')`;
-    overlay.style.opacity = 1;
-
-    setTimeout(() => {
-      body.style.backgroundImage = `url('${backgrounds[next]}')`;
-      overlay.style.opacity = 0;
-      current = next;
-    }, 1800);
-  }, 30000);
-</script>
 
 
   </style>
@@ -400,7 +358,45 @@ Such distortions remind us that no idea should ever be understood apart from its
       });
     });
   </script>
+<script>
+  // ====== Background rotation with fade effect ======
+const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
+let current = 0;
+const body = document.body;
 
+
+// 👇 این بخش تصویر اولیه رو برمی‌گردونه
+body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
+body.style.backgroundSize = 'cover';
+
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = 0;
+  overlay.style.left = 0;
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.zIndex = '-1';
+  overlay.style.backgroundSize = 'cover';
+  overlay.style.backgroundPosition = 'center';
+  overlay.style.transition = 'opacity 2s ease-in-out';
+  overlay.style.opacity = 0;
+  document.body.appendChild(overlay);
+
+  body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
+  body.style.backgroundSize = 'cover';
+
+  setInterval(() => {
+    const next = (current + 1) % backgrounds.length;
+    overlay.style.backgroundImage = `url('${backgrounds[next]}')`;
+    overlay.style.opacity = 1;
+
+    setTimeout(() => {
+      body.style.backgroundImage = `url('${backgrounds[next]}')`;
+      overlay.style.opacity = 0;
+      current = next;
+    }, 1800);
+  }, 30000);
+</script>
 
 
 </body>

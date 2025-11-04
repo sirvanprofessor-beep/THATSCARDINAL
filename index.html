@@ -305,6 +305,57 @@ backdrop-filter: blur(8px);;color:#fff;border-radius:12px;padding:18px;max-width
       class="modal-img">
     </div>
   </div>
+  <!-- ==== MODAL: DIRECTOR INTRO ==== -->
+<div id="modal-director" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="directorTitle">
+    <span class="close" data-modal="modal-director" title="Close">&times;</span>
+    <h3 id="directorTitle">Christopher Nolan</h3>
+    <p>
+      Christopher Nolan is one of the most influential directors of modern cinema, known for his complex storytelling, non-linear narratives, and deep philosophical questions about time, identity, and reality. His films combine visual spectacle with intellectual depth.
+    </p>
+    <p>
+      Notable works include:
+      <a href="#" class="film-link" data-modal="modal-inception">Inception</a>,
+      Interstellar, and The Dark Knight Trilogy.
+    </p>
+  </div>
+</div>
+ <!-- ==== MODAL: MOVIE INTRO ==== -->
+<div id="modal-inception" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="inceptionTitle">
+    <span class="close" data-modal="modal-inception" title="Close">&times;</span>
+    <h3 id="inceptionTitle">Inception</h3>
+    <p>
+      *Inception* (2010) is a science fiction masterpiece directed by Christopher Nolan. The film explores the concept of shared dreaming and the blurry line between imagination and reality. It’s known for its groundbreaking visual effects and thought-provoking narrative.
+    </p>
+    <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/inception.webp" alt="Inception Poster" class="modal-img">
+  </div>
+</div>
+ <!-- ==== MODAL: MOVIE INTRO ==== -->
+<div id="modal-inception" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="inceptionTitle">
+    <span class="close" data-modal="modal-inception" title="Close">&times;</span>
+    <h3 id="inceptionTitle">Inception</h3>
+    <p>
+      *Inception* (2010) is a science fiction masterpiece directed by Christopher Nolan. The film explores the concept of shared dreaming and the blurry line between imagination and reality. It’s known for its groundbreaking visual effects and thought-provoking narrative.
+    </p>
+    <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/inception.webp" alt="Inception Poster" class="modal-img">
+  </div>
+</div>
+
+  
+<!-- ==== MODAL: MOVIE INTRO ==== -->
+<div id="modal-inception" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="inceptionTitle">
+    <span class="close" data-modal="modal-inception" title="Close">&times;</span>
+    <h3 id="inceptionTitle">Inception</h3>
+    <p>
+      *Inception* (2010) is a science fiction masterpiece directed by Christopher Nolan. The film explores the concept of shared dreaming and the blurry line between imagination and reality. It’s known for its groundbreaking visual effects and thought-provoking narrative.
+    </p>
+    <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/inception.webp" alt="Inception Poster" class="modal-img">
+  </div>
+</div>
+
 
   <!-- ==== MODALS (ENGLISH) ==== -->
   <!-- ==== MODAL: DIRECTOR INTRO (ENGLISH) ==== -->
@@ -427,6 +478,19 @@ A powerful poster can stop a passerby, spark curiosity, and draw them into the e
   </div>
 
   <script>
+    
+    // باز کردن مودال فیلم از داخل مودال کارگردان
+document.querySelectorAll('.film-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetModal = link.getAttribute('data-modal');
+    if (targetModal) {
+      document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+      openModal(targetModal);
+    }
+  });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   // ====== Language switch logic ======
   const faBtn = document.getElementById('fa-btn');

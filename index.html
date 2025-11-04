@@ -513,15 +513,11 @@ A powerful poster can stop a passerby, spark curiosity, and draw them into the e
     });
   </script>
 <script>
+document.addEventListener('DOMContentLoaded', () => {
   // ====== Background rotation with fade effect ======
-const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
-let current = 0;
-const body = document.body;
-
-
-// 👇 این بخش تصویر اولیه رو برمی‌گردونه
-body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
-body.style.backgroundSize = 'cover';
+  const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
+  let current = 0;
+  const body = document.body;
 
   const overlay = document.createElement('div');
   overlay.style.position = 'fixed';
@@ -543,7 +539,6 @@ body.style.backgroundSize = 'cover';
     const next = (current + 1) % backgrounds.length;
     overlay.style.backgroundImage = `url('${backgrounds[next]}')`;
     overlay.style.opacity = 1;
-
     setTimeout(() => {
       body.style.backgroundImage = `url('${backgrounds[next]}')`;
       overlay.style.opacity = 0;
@@ -551,29 +546,28 @@ body.style.backgroundSize = 'cover';
     }, 1800);
   }, 30000);
 
-  // ===== لینک‌های داخل مودال برای باز کردن مودال دیگر =====
-document.querySelectorAll('.inner-link').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const targetId = link.getAttribute('data-target');
-    // بستن تمام مودال‌های باز
-    document.querySelectorAll('.modal[aria-hidden="false"]').forEach(openModalEl => {
-      openModalEl.setAttribute('aria-hidden', 'true');
-      openModalEl.style.display = 'none';
-    });
-    // باز کردن مودال جدید
-    if (targetId) {
-      const newModal = document.getElementById(targetId);
-      if (newModal) {
-        newModal.setAttribute('aria-hidden', 'false');
-        newModal.style.display = 'flex';
+  // ====== لینک‌های داخل مودال برای باز کردن مودال دیگر ======
+  document.querySelectorAll('.inner-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = link.getAttribute('data-target');
+      // بستن تمام مودال‌های باز
+      document.querySelectorAll('.modal[aria-hidden="false"]').forEach(openModalEl => {
+        openModalEl.setAttribute('aria-hidden', 'true');
+        openModalEl.style.display = 'none';
+      });
+      // باز کردن مودال جدید
+      if (targetId) {
+        const newModal = document.getElementById(targetId);
+        if (newModal) {
+          newModal.setAttribute('aria-hidden', 'false');
+          newModal.style.display = 'flex';
+        }
       }
-    }
+    });
   });
 });
-
 </script>
-
 
 </body>
 </html>

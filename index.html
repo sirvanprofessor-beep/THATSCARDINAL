@@ -374,11 +374,14 @@ A powerful poster can stop a passerby, spark curiosity, and draw them into the e
       });
 
       // clicking outside modal-content closes modal
-      window.addEventListener('click', e=>{
-        document.querySelectorAll('.modal').forEach(modal=>{
-          if(e.target === modal) closeModal(modal.id);
-        });
-      });
+    document.querySelectorAll('.modal').forEach(modal=>{
+  modal.addEventListener('click', e => {
+    if (e.target.classList.contains('modal')) {
+      closeModal(modal.id);
+    }
+  });
+});
+
 
       // close on ESC
       window.addEventListener('keydown', e=>{

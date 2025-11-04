@@ -65,581 +65,163 @@
     .social-icons{margin-top:18px;display:flex;justify-content:center;gap:14px}
     .social-icons a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.18);color:#000;font-size:18px;text-decoration:none}
 
-    /* modal */
     .modal{display:none;position:fixed;z-index:1200;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.72);align-items:center;justify-content:center;padding:20px}
     .modal[aria-hidden="false"]{display:flex}
-    .modal-content{background: rgba(0,0,0,0.7);
-color: #fff;
-backdrop-filter: blur(8px);;color:#fff;border-radius:12px;padding:18px;max-width:560px;width:100%;text-align:right;box-shadow:0 12px 40px rgba(0,0,0,0.35)}
+    .modal-content{background: rgba(0,0,0,0.7);color:#fff;backdrop-filter: blur(8px);border-radius:12px;padding:18px;max-width:560px;width:100%;text-align:right;box-shadow:0 12px 40px rgba(0,0,0,0.35)}
     .close{float:left;color:#888;font-size:26px;font-weight:700;cursor:pointer}
     .close:hover{color:#000}
 
-    /* responsive */
     @media (max-width:640px){
       .project-card{width:100%}
       .profile-img{width:120px;height:120px}
     }
- 
-   .modal-img {
-  width: 80%;
-  max-width: 400px;
-  height: auto;
-  display: block;
-  margin: 12px auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-}
+
+    .modal-img {
+      width: 80%;
+      max-width: 400px;
+      height: auto;
+      display: block;
+      margin: 12px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
     .inner-link {
-  color: #5bbcff;
-  text-decoration: none;
-  font-weight: 600;
-}
-.inner-link:hover {
-  text-decoration: underline;
-  color: #ffd700;
-}
-.inner-link {
-  color: #5bbcff;
-  text-decoration: none;
-  font-weight: 600;
-}
-.inner-link:hover {
-  text-decoration: underline;
-  color: #ffd700;
-}
-
-</style>
-
-
-
-
+      color: #5bbcff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .inner-link:hover {
+      text-decoration: underline;
+      color: #ffd700;
+    }
   </style>
-  
 </head>
+
 <body>
-
-  
-
-
-  <!-- language switch -->
-  <div class="language-switch" aria-hidden="false">
+  <!-- زبان -->
+  <div class="language-switch">
     <img src="Flag_of_iran_standard.svg.webp" id="fa-btn" title="فارسی" class="flag-img" alt="fa">
     <img src="Flag_of_the_United_Kingdom_(3-5).svg.webp" id="en-btn" title="English" class="flag-img" alt="en">
   </div>
 
-  <!-- ==== PERSIAN CONTENT ==== -->
+  <!-- فارسی -->
   <main class="container" id="fa-content" lang="fa" dir="rtl" style="display:block;">
     <div class="slogan">زن، زندگی، آزادی</div>
     <img class="profile-img" src="profile.webp" alt="PROFESSOR">
     <div class="professor-title">Professor Cardinal</div>
     <h1>ادیتور ویدیو و عکس</h1>
     <h2>به سوی بینهایت و فراتر از آن</h2>
-
     <a class="email-button" href="mailto:sirvanprofessor@gmail.com">📧 EMAIL ADDRESS</a>
 
-    <div class="projects" id="fa-projects">
+    <div class="projects">
       <div class="project-card" data-modal="modal1">
-        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/chaplin.webp" alt="تاریخ سینما">
+        <img src="chaplin.webp" alt="تاریخ سینما">
         <h3>تاریخ سینما</h3>
         <p>سینما و تاریخ</p>
-    </div>
-
+      </div>
       <div class="project-card" data-modal="modal2">
-        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="تاریخ نگاری">
+        <img src="project1.webp" alt="تاریخ نگاری">
         <h3>تاریخ نگاری</h3>
         <p>نگاهی دقیق به تاریخ</p>
       </div>
-
       <div class="project-card" data-modal="modal3">
-        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project2.webp" alt="پوستر سینمایی">
+        <img src="project2.webp" alt="پوستر سینمایی">
         <h3>پوستر سینمایی</h3>
-        <p>طراحی پوستر فیلم های سینمایی</p>
-    </div>
- </div>
-<!-- ==== MODAL: DIRECTOR INTRO ==== -->
-<div id="modal-director" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="director-title">
-    <span class="close" data-modal="modal-director" title="بستن">&times;</span>
-    <h3 id="director-title">کریستوفر نولان</h3>
-    <p>
-      کریستوفر نولان یکی از کارگردانان برجسته سینمای معاصر است که آثارش
-      میان تخیل، فلسفه و واقعیت در نوسان‌اند. او با روایت‌های چندلایه و ساختارهای پیچیده‌اش
-      توانسته تعریفی تازه از فیلم مدرن ارائه دهد.
-    </p>
-    <p>
-      آثار شاخص:
-      <a href="#" class="inner-link" data-target="modal-inception">Inception</a> ،
-      <a href="#" class="inner-link" data-target="modal-interstellar">Interstellar</a>
-    </p>
-  </div>
-</div>
-
-<!-- ==== MODAL: FILM 1 ==== -->
-<div id="modal-inception" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="film1-title">
-    <span class="close" data-modal="modal-inception" title="بستن">&times;</span>
-    <h3 id="film1-title">Inception (۲۰۱۰)</h3>
-    <p>
-      فیلمی پیچیده درباره رویا، ناخودآگاه و واقعیت. نولان با این اثر مرز میان خیال و حقیقت را محو کرد
-      و یکی از تأثیرگذارترین فیلم‌های قرن ۲۱ را ساخت.
-    </p>
-    <p>
-      بازگشت به:
-      <a href="#" class="inner-link" data-target="modal-director">کریستوفر نولان</a>
-    </p>
-  </div>
-</div>
-
-<!-- ==== MODAL: FILM 2 ==== -->
-<div id="modal-interstellar" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="film2-title">
-    <span class="close" data-modal="modal-interstellar" title="بستن">&times;</span>
-    <h3 id="film2-title">Interstellar (۲۰۱۴)</h3>
-    <p>
-      اثری شاعرانه و علمی درباره عشق، زمان و بقای نوع بشر. نولان در این فیلم مفاهیم فیزیک نظری را
-      با احساس انسانی پیوند می‌دهد.
-    </p>
-    <p>
-      بازگشت به:
-      <a href="#" class="inner-link" data-target="modal-director">کریستوفر نولان</a>
-    </p>
-  </div>
-</div>
-
-    <div class="social-icons">
-      <a href="https://www.instagram.com/thatscardinal" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-      <a href="https://t.me/onesecondloop" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i></a>
-      <a href="https://github.com/sirvanprofessor-beep" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-    </div>
-  </main>
-
-  <!-- ==== ENGLISH CONTENT ==== -->
-  <main class="container" id="en-content" lang="en" dir="ltr" style="display:none;">
-    <div class="slogan" style="font-family: 'Cinzel Decorative', serif;">Woman, Life, Freedom</div>
-    <img class="profile-img" src="profile.webp" alt="PROFESSOR">
-    <div class="professor-title">Professor Cardinal</div>
-    <h1>Video & Photo Editor</h1>
-    <h2>To infinity and beyond</h2>
-
-    <a class="email-button" href="mailto:sirvanprofessor@gmail.com">📧 EMAIL ADDRESS</a>
-
-    <div class="projects" id="en-projects">
-      <div class="project-card" data-modal="modal4">
-        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/chaplin.webp" alt="Cinema History">
-        <h3>Cinema History</h3>
-        <p>Cinema and history</p>
-      </div>
-
-      <div class="project-card" data-modal="modal5">
-        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="Historiography">
-        <h3>Historiography</h3>
-        <p>A detailed look at history</p>
-      </div>
-
-      <div class="project-card" data-modal="modal6">
-        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project2.webp" alt="Movie Posters">
-        <h3>Movie Posters</h3>
-        <p>Creative movie poster designs</p>
+        <p>طراحی پوستر فیلم‌های سینمایی</p>
       </div>
     </div>
 
     <div class="social-icons">
-      <a href="https://www.instagram.com/thatscardinal" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-      <a href="https://t.me/onesecondloop" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i></a>
-      <a href="https://github.com/sirvanprofessor-beep" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/thatscardinal" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://t.me/onesecondloop" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://github.com/sirvanprofessor-beep" target="_blank"><i class="fab fa-github"></i></a>
     </div>
   </main>
 
-  <!-- ==== MODALS (PERSIAN) ==== -->
-  <div id="modal1" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-labelledby="m1t">
-      <span class="close" data-modal="modal1" title="بستن">&times;</span>
-      <h3 id="m1t">تاریخ سینما</h3>
-      <p>اواخر قرن ۱۹ (۱۸۹۵): برادران لومیر در فرانسه با نمایش فیلم‌هایی کوتاه مثل خروج کارگران از کارخانه، تولد رسمی سینما را رقم زدند.
-
-اوایل قرن ۲۰: سینما از ابزار علمی به هنری برای روایت داستان تبدیل شد. ژرژ ملی‌یس با فیلم‌هایی مثل سفر به ماه، جلوه‌های ویژه را وارد سینما کرد.
-
-دهه‌ ۱۹۲۰: دوران سینمای صامت و شکوفایی ستارگانی مثل چارلی چاپلین.
-
-۱۹۲۷: با فیلم خواننده جاز، صدای هم‌زمان وارد سینما شد و “سینمای ناطق” آغاز شد.
-
-دهه‌ ۱۹۳۰ تا ۱۹۵۰: دوران طلایی هالیوود؛ استودیوهای بزرگ و ژانرهایی چون وسترن، موزیکال و نوآر شکل گرفتند.
-
-دهه‌ ۱۹۶۰ و ۱۹۷۰: موج نو در اروپا (فرانسه، ایتالیا و...) و ظهور سینمای مؤلف؛ کارگردانانی مثل گدار و فلینی.
-
-دهه‌ ۱۹۸۰ تا امروز: گسترش جلوه‌های ویژه دیجیتال، سینمای مستقل، و جهانی شدن فیلم‌سازی.
-
-قرن ۲۱: ظهور سینمای دیجیتال، پلتفرم‌های آنلاین (مثل نتفلیکس) و ادغام تکنولوژی با روایت (واقعیت مجازی و CGI).</p>
-       <img 
-      src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project52.webp" 
-      alt="oops" 
-      class="modal-img">
+  <!-- مودال‌ها (مثال برای ارتباط کارگردان ← فیلم‌ها) -->
+  <div id="modal-director" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close" data-modal="modal-director">&times;</span>
+      <h3>کریستوفر نولان</h3>
+      <p>کریستوفر نولان یکی از کارگردانان برجسته سینمای معاصر است...</p>
+      <p>
+        آثار شاخص:
+        <a href="#" class="inner-link" data-target="modal-inception">Inception</a>،
+        <a href="#" class="inner-link" data-target="modal-interstellar">Interstellar</a>
+      </p>
     </div>
   </div>
 
-  <div id="modal2" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-labelledby="m2t">
-      <span class="close" data-modal="modal2" title="بستن">&times;</span>
-      <h3 id="m2t">تاریخ نگاری</h3>
-      <p>برداشت‌های نادرست از علم و فلسفه
-مفاهیم عمیق علمی و فلسفی بیش از هر زمان دیگری در دسترس‌اند، اما همین دسترسی گاهی به سوء‌برداشت می‌انجامد. بسیاری بدون درک مبانی نظری، از جملات فیلسوفان یا یافته‌های علمی برای تأیید باورهای شخصی یا ایدئولوژیک خود استفاده می‌کنند؛ پدیده‌ای که می‌توان آن را «شبه‌علم» و «شبه‌فلسفه» نامید.
-
-نمونه‌ی روشن این مسئله، سرنوشت ایده‌ی ابر‌انسان در اندیشه‌ی نیچه است. او از انسانی سخن می‌گفت که با خلاقیت و خودآگاهی، از مرزهای اخلاق تحمیلی عبور کند و معنا را از درون خود بیافریند. اما بعدها رژیم نازی این مفهوم را از بستر فلسفی‌اش جدا کرد و به ابزار توجیه برتری نژادی بدل ساخت؛ در حالی که نیچه اساساً از سلطه یا نژاد برتر سخن نمی‌گفت.
-
-این تحریف‌ها یادآور آن‌اند که هیچ اندیشه‌ای را نباید جدا از زمینه‌اش فهمید. فلسفه و علم برای اندیشیدن‌اند، نه برای شعار دادن. اگر نیچه از ابر‌انسان گفت، هدفش آزادی از تقلید و جزم‌گرایی بود، نه ستایش قدرت کور.</p>
-      
-       <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="Cinema History" class="modal-img">
-      
+  <div id="modal-inception" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close" data-modal="modal-inception">&times;</span>
+      <h3>Inception (۲۰۱۰)</h3>
+      <p>فیلمی پیچیده درباره رویا، ناخودآگاه و واقعیت...</p>
+      <p>بازگشت به: <a href="#" class="inner-link" data-target="modal-director">کریستوفر نولان</a></p>
     </div>
   </div>
 
-  <div id="modal3" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-labelledby="m3t">
-      <span class="close" data-modal="modal3" title="بستن">&times;</span>
-      <h3 id="m3t">پوستر سینمایی</h3>
-      <p>پوستر فیلم، تنها یک تصویر تبلیغاتی نیست؛ پنجره‌ای است به دنیای روایت. در یک نگاه، باید بتواند حس، فضا، و زبان بصری اثر را منتقل کند. رنگ‌ها، ترکیب‌بندی و تایپوگرافی هرکدام روایتی پنهان در دل خود دارند که مخاطب را پیش از تماشای فیلم، وارد حال‌و‌هوای آن می‌کنند.
-یک پوستر موفق می‌تواند بیننده را متوقف کند، ذهنش را تحریک کند و او را به تماشای فیلم ترغیب نماید. تاریخ سینما پر است از پوسترهایی که به‌تنهایی تبدیل به آثار هنری ماندگار شده‌اند. در جهانی که تصویر بر کلمه پیشی گرفته، پوستر فیلم، نخستین روایت بصری اثر است — اولین دیالوگ میان خالق و مخاطب..</p>
-       <img 
-      src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project41.webp" 
-      alt="oops" 
-      class="modal-img">
-    </div>
-  </div>
-  <!-- ==== MODAL: DIRECTOR INTRO ==== -->
-<div id="modal-director" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="directorTitle">
-    <span class="close" data-modal="modal-director" title="Close">&times;</span>
-    <h3 id="directorTitle">Christopher Nolan</h3>
-    <p>
-      Christopher Nolan is one of the most influential directors of modern cinema, known for his complex storytelling, non-linear narratives, and deep philosophical questions about time, identity, and reality. His films combine visual spectacle with intellectual depth.
-    </p>
-    <p>
-      Notable works include:
-      <a href="#" class="film-link" data-modal="modal-inception">Inception</a>,
-      Interstellar, and The Dark Knight Trilogy.
-    </p>
-  </div>
-</div>
- <!-- ==== MODAL: MOVIE INTRO ==== -->
-<div id="modal-inception" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="inceptionTitle">
-    <span class="close" data-modal="modal-inception" title="Close">&times;</span>
-    <h3 id="inceptionTitle">Inception</h3>
-    <p>
-      *Inception* (2010) is a science fiction masterpiece directed by Christopher Nolan. The film explores the concept of shared dreaming and the blurry line between imagination and reality. It’s known for its groundbreaking visual effects and thought-provoking narrative.
-    </p>
-    <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/inception.webp" alt="Inception Poster" class="modal-img">
-  </div>
-</div>
- <!-- ==== MODAL: MOVIE INTRO ==== -->
-<div id="modal-inception" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="inceptionTitle">
-    <span class="close" data-modal="modal-inception" title="Close">&times;</span>
-    <h3 id="inceptionTitle">Inception</h3>
-    <p>
-      *Inception* (2010) is a science fiction masterpiece directed by Christopher Nolan. The film explores the concept of shared dreaming and the blurry line between imagination and reality. It’s known for its groundbreaking visual effects and thought-provoking narrative.
-    </p>
-    <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/inception.webp" alt="Inception Poster" class="modal-img">
-  </div>
-</div>
-
-  
-<!-- ==== MODAL: MOVIE INTRO ==== -->
-<div id="modal-inception" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="inceptionTitle">
-    <span class="close" data-modal="modal-inception" title="Close">&times;</span>
-    <h3 id="inceptionTitle">Inception</h3>
-    <p>
-      *Inception* (2010) is a science fiction masterpiece directed by Christopher Nolan. The film explores the concept of shared dreaming and the blurry line between imagination and reality. It’s known for its groundbreaking visual effects and thought-provoking narrative.
-    </p>
-    <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/inception.webp" alt="Inception Poster" class="modal-img">
-  </div>
-</div>
-
-
-  <!-- ==== MODALS (ENGLISH) ==== -->
-  <!-- ==== MODAL: DIRECTOR INTRO (ENGLISH) ==== -->
-<div id="modal-director-en" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="director-en-title">
-    <span class="close" data-modal="modal-director-en" title="Close">&times;</span>
-    <h3 id="director-en-title">Christopher Nolan</h3>
-    <p>
-      Christopher Nolan is one of the most influential filmmakers of the modern era.
-      Known for his intellectual storytelling and complex narrative structures,
-      Nolan explores the boundaries between reality, time, and human perception.
-    </p>
-    <p>
-      Notable works:
-      <a href="#" class="inner-link" data-target="modal-inception-en">Inception</a> ·
-      <a href="#" class="inner-link" data-target="modal-interstellar-en">Interstellar</a>
-    </p>
-  </div>
-</div>
-
-<!-- ==== MODAL: FILM 1 (INCEPTION) ==== -->
-<div id="modal-inception-en" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="film1-en-title">
-    <span class="close" data-modal="modal-inception-en" title="Close">&times;</span>
-    <h3 id="film1-en-title">Inception (2010)</h3>
-    <p>
-      A mind-bending journey into the architecture of dreams.
-      Nolan blends science fiction, emotion, and psychological depth
-      to question what is real and what is illusion.
-    </p>
-    <p>
-      Back to:
-      <a href="#" class="inner-link" data-target="modal-director-en">Christopher Nolan</a>
-    </p>
-  </div>
-</div>
-
-<!-- ==== MODAL: FILM 2 (INTERSTELLAR) ==== -->
-<div id="modal-interstellar-en" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="film2-en-title">
-    <span class="close" data-modal="modal-interstellar-en" title="Close">&times;</span>
-    <h3 id="film2-en-title">Interstellar (2014)</h3>
-    <p>
-      A poetic and scientific exploration of love, time, and survival.
-      Through stunning visuals and emotional depth,
-      Nolan connects human feeling with the vastness of the cosmos.
-    </p>
-    <p>
-      Back to:
-      <a href="#" class="inner-link" data-target="modal-director-en">Christopher Nolan</a>
-    </p>
-  </div>
-</div>
-
- <div id="modal6" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-labelledby="m6t">
-      <span class="close" data-modal="modal6" title="Close">&times;</span>
-      <h3 id="m6t">Movie Posters</h3>
-      <p>Designing creative and professional movie posters inspired by classic and modern styles — combining graphic art and visual storytelling.</p>
-       <img 
-      src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project41.webp" 
-      alt="Historiography Image" 
-      class="modal-img">
-    </div>
-  </div>
-
-  <div id="modal5" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-labelledby="m5t">
-      <span class="close" data-modal="modal5" title="Close">&times;</span>
-      <h3 id="m5t">Historiography</h3>
-      <p>Misinterpretations of Science and Philosophy
-Profound scientific and philosophical concepts are now more accessible than ever before, yet this very accessibility often leads to misunderstanding. Many people, without grasping the underlying principles, use the words of philosophers or scientific findings to justify personal or ideological beliefs — a phenomenon that can be called pseudo-science and pseudo-philosophy.
-
-A clear example of this is the fate of Nietzsche’s idea of the Übermensch (Overman). Nietzsche spoke of a human being who, through creativity and self-awareness, transcends imposed morality and creates meaning from within. Yet later, the Nazi regime tore this concept from its philosophical context and turned it into a tool for justifying racial superiority — even though Nietzsche never spoke of domination or a “master race.”
-
-Such distortions remind us that no idea should ever be understood apart from its context. Philosophy and science exist to make us think, not to provide slogans. When Nietzsche spoke of the Overman, his aim was freedom from imitation and dogmatism — not the glorification of blind power.</p>
-      <img 
-      src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" 
-      alt="Historiography Image" 
-      class="modal-img">
-    </div>
-  </div>
-  
- <div id="modal4" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-labelledby="m4t">
-      <span class="close" data-modal="modal4" title="Close">&times;</span>
-      <h3 id="m4t">Cinema History</h3>
-      <p>Late 19th century (1895): The Lumière brothers in France marked the official birth of cinema by screening short films such as Workers Leaving the Factory.
-
-Early 20th century: Cinema evolved from a scientific curiosity into an art form for storytelling. Georges Méliès introduced special effects to film with works like A Trip to the Moon.
-
-1920s: The era of silent cinema and the rise of stars like Charlie Chaplin.
-
-1927: With the release of The Jazz Singer, synchronized sound entered film, marking the beginning of “talkies.”
-
-1930s–1950s: The Golden Age of Hollywood — major studios flourished, and genres such as westerns, musicals, and film noir took shape.
-
-1960s–1970s: The New Wave movements in Europe (France, Italy, and others) emerged, introducing the concept of the auteur. Directors like Godard and Fellini redefined cinematic expression.
-
-1980s to today: Expansion of digital visual effects, independent cinema, and the globalization of filmmaking.
-
-21st century: The rise of digital cinema, online platforms (like Netflix), and the merging of technology with storytelling — including virtual reality and CGI..</p>
-      <img 
-      src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project52.webp" 
-      alt="oops" 
-      class="modal-img">
-    </div>
-  </div>
-  <div id="modal6" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-labelledby="m6t">
-      <span class="close" data-modal="modal6" title="Close">&times;</span>
-      <h3 id="m6t">Movie Posters</h3>
-      <p>A movie poster is not merely an advertisement — it’s a window into the film’s universe. At a single glance, it must communicate the emotion, atmosphere, and visual language of the story. Every color, composition, and typeface carries a hidden narrative that invites the viewer into the film’s mood before a single frame is seen.
-A powerful poster can stop a passerby, spark curiosity, and draw them into the experience. Cinema history is filled with posters that became timeless works of art in their own right. In a world where images speak louder than words, the movie poster stands as the film’s first visual story — the opening dialogue between creator and audience..</p>
-       <img 
-      src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project41.webp" 
-      alt="oops" 
-      class="modal-img">
+  <div id="modal-interstellar" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close" data-modal="modal-interstellar">&times;</span>
+      <h3>Interstellar (۲۰۱۴)</h3>
+      <p>اثری شاعرانه و علمی درباره عشق، زمان و بقای نوع بشر...</p>
+      <p>بازگشت به: <a href="#" class="inner-link" data-target="modal-director">کریستوفر نولان</a></p>
     </div>
   </div>
 
   <script>
-    
-    // باز کردن مودال فیلم از داخل مودال کارگردان
-document.querySelectorAll('.film-link').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const targetModal = link.getAttribute('data-modal');
-    if (targetModal) {
-      document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-      openModal(targetModal);
+  document.addEventListener('DOMContentLoaded', () => {
+    const faBtn = document.getElementById('fa-btn');
+    const enBtn = document.getElementById('en-btn');
+    const faContent = document.getElementById('fa-content');
+    const enContent = document.getElementById('en-content');
+
+    function setLanguage(lang){
+      if(lang === 'fa'){faContent.style.display='block';enContent.style.display='none';}
+      else{faContent.style.display='none';enContent.style.display='block';}
+      localStorage.setItem('lang', lang);
     }
-  });
-});
+    faBtn.addEventListener('click', ()=> setLanguage('fa'));
+    enBtn.addEventListener('click', ()=> setLanguage('en'));
+    setLanguage(localStorage.getItem('lang') || 'fa');
 
-document.addEventListener('DOMContentLoaded', () => {
-  // ====== Language switch logic ======
-  const faBtn = document.getElementById('fa-btn');
-  const enBtn = document.getElementById('en-btn');
-  const faContent = document.getElementById('fa-content');
-  const enContent = document.getElementById('en-content');
+    function fadeIn(el){el.style.display='flex';el.style.opacity=0;el.style.transition='opacity .4s';requestAnimationFrame(()=>el.style.opacity=1);}
+    function fadeOut(el){el.style.opacity=0;setTimeout(()=>el.style.display='none',400);}
+    function openModal(id){const m=document.getElementById(id);if(!m)return;m.setAttribute('aria-hidden','false');fadeIn(m);}
+    function closeModal(id){const m=document.getElementById(id);if(!m)return;m.setAttribute('aria-hidden','true');fadeOut(m);}
 
-  function setLanguage(lang){
-    if(lang === 'fa'){
-      faContent.style.display = 'block';
-      enContent.style.display = 'none';
-      document.documentElement.lang = 'fa';
-      document.body.dir = 'rtl';
-    } else {
-      faContent.style.display = 'none';
-      enContent.style.display = 'block';
-      document.documentElement.lang = 'en';
-      document.body.dir = 'ltr';
-    }
-    try { localStorage.setItem('lang', lang); } catch(e){}
-  }
+    document.querySelectorAll('.project-card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.modal)));
+    document.querySelectorAll('.close').forEach(btn=>btn.addEventListener('click',()=>closeModal(btn.dataset.modal)));
+    document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target.classList.contains('modal'))closeModal(m.id);}));
 
-  faBtn.addEventListener('click', ()=> setLanguage('fa'));
-  enBtn.addEventListener('click', ()=> setLanguage('en'));
-  const saved = (localStorage.getItem('lang') || 'fa');
-  setLanguage(saved);
-
-  // ====== Modal fade open/close logic ======
-  function fadeIn(element) {
-    element.style.display = 'flex';
-    element.style.opacity = 0;
-    element.style.transition = 'opacity 0.5s ease';
-    requestAnimationFrame(() => {
-      element.style.opacity = 1;
-    });
-  }
-
-  function fadeOut(element) {
-    element.style.opacity = 0;
-    element.style.transition = 'opacity 0.4s ease';
-    setTimeout(() => {
-      element.style.display = 'none';
-    }, 400);
-  }
-
-  function openModal(id){
-    const modal = document.getElementById(id);
-    if(!modal) return;
-    modal.setAttribute('aria-hidden','false');
-    fadeIn(modal);
-  }
-
-  function closeModal(id){
-    const modal = document.getElementById(id);
-    if(!modal) return;
-    modal.setAttribute('aria-hidden','true');
-    fadeOut(modal);
-  }
-
-  document.querySelectorAll('.project-card').forEach(card=>{
-    card.addEventListener('click', ()=>{
-      const modalId = card.getAttribute('data-modal');
-      if(modalId) openModal(modalId);
-    });
-  });
-
-  document.querySelectorAll('.close').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const modalId = btn.getAttribute('data-modal');
-      if(modalId) closeModal(modalId);
-    });
-  });
-
-  // close when clicking outside
-  document.querySelectorAll('.modal').forEach(modal=>{
-    modal.addEventListener('click', e => {
-      if (e.target.classList.contains('modal')) closeModal(modal.id);
-    });
-  });
-
-  // close on ESC
-  window.addEventListener('keydown', e=>{
-    if(e.key === 'Escape' || e.key === 'Esc'){
-      document.querySelectorAll('.modal').forEach(m=>{
-        if(m.getAttribute('aria-hidden') === 'false') fadeOut(m);
+    document.querySelectorAll('.inner-link').forEach(link=>{
+      link.addEventListener('click',e=>{
+        e.preventDefault();
+        const target=link.dataset.target;
+        const open=document.querySelector('.modal[aria-hidden="false"]');
+        if(open){fadeOut(open);setTimeout(()=>{open.setAttribute('aria-hidden','true');openModal(target);},400);}
+        else openModal(target);
       });
-    }
-  });
-
-  // ====== Background rotation with fade effect ======
-  const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
-  let current = 0;
-  const body = document.body;
-  const overlay = document.createElement('div');
-  overlay.style.position = 'fixed';
-  overlay.style.top = 0;
-  overlay.style.left = 0;
-  overlay.style.width = '100%';
-  overlay.style.height = '100%';
-  overlay.style.zIndex = '-1';
-  overlay.style.backgroundSize = 'cover';
-  overlay.style.backgroundPosition = 'center';
-  overlay.style.transition = 'opacity 2s ease-in-out';
-  overlay.style.opacity = 0;
-  document.body.appendChild(overlay);
-  body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
-  body.style.backgroundSize = 'cover';
-  setInterval(() => {
-    const next = (current + 1) % backgrounds.length;
-    overlay.style.backgroundImage = `url('${backgrounds[next]}')`;
-    overlay.style.opacity = 1;
-    setTimeout(() => {
-      body.style.backgroundImage = `url('${backgrounds[next]}')`;
-      overlay.style.opacity = 0;
-      current = next;
-    }, 1800);
-  }, 30000);
-
-  // ====== Inner links between modals (with fade transition) ======
-  document.querySelectorAll('.inner-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const targetId = link.getAttribute('data-target');
-      if (!targetId) return;
-
-      // پیدا کردن مودال باز فعلی
-      const openModalEl = document.querySelector('.modal[aria-hidden="false"]');
-      if (openModalEl) {
-        fadeOut(openModalEl);
-        setTimeout(() => {
-          openModalEl.setAttribute('aria-hidden', 'true');
-          const newModal = document.getElementById(targetId);
-          if (newModal) {
-            newModal.setAttribute('aria-hidden', 'false');
-            fadeIn(newModal);
-          }
-        }, 400);
-      } else {
-        const newModal = document.getElementById(targetId);
-        if (newModal) {
-          newModal.setAttribute('aria-hidden', 'false');
-          fadeIn(newModal);
-        }
-      }
     });
+
+    // بک‌گراند
+    const backgrounds=['background2.webp','background5.webp','background7.webp'];
+    let current=0;
+    const body=document.body;
+    const overlay=document.createElement('div');
+    Object.assign(overlay.style,{position:'fixed',top:0,left:0,width:'100%',height:'100%',zIndex:'-1',backgroundSize:'cover',backgroundPosition:'center',transition:'opacity 2s',opacity:0});
+    document.body.appendChild(overlay);
+    body.style.background=`url('${backgrounds[0]}') no-repeat center center fixed`;
+    body.style.backgroundSize='cover';
+    setInterval(()=>{
+      const next=(current+1)%backgrounds.length;
+      overlay.style.backgroundImage=`url('${backgrounds[next]}')`;
+      overlay.style.opacity=1;
+      setTimeout(()=>{body.style.backgroundImage=`url('${backgrounds[next]}')`;overlay.style.opacity=0;current=next;},1800);
+    },30000);
   });
-});
-</script>
-
-
+  </script>
 </body>
 </html>

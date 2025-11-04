@@ -38,10 +38,10 @@
       border-radius:18px;
       backdrop-filter:blur(8px);
       box-shadow:0 8px 30px rgba(0,0,0,0.35);
-      padding:28px;text-align:center;position:relative;z-index:1;
+      padding:28px;text-align:center;position:relative;z-index:2; /* above overlay */
     }
 
-    .language-switch{position:absolute;top:18px;right:18px;display:flex;gap:10px;z-index:10}
+    .language-switch{position:absolute;top:18px;right:18px;display:flex;gap:10px;z-index:3}
     .flag-img{width:34px;height:22px;cursor:pointer;border:2px solid #fff;border-radius:4px;object-fit:cover}
     .flag-img:hover{transform:scale(1.08)}
 
@@ -66,142 +66,399 @@
     .social-icons a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.18);color:#000;font-size:18px;text-decoration:none}
 
     /* modal */
-    .modal{display:none;position:fixed;z-index:1200;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.72);align-items:center;justify-content:center;padding:20px}
-    .modal[aria-hidden="false"]{display:flex}
-    .modal-content{background:#fff;color:#000;border-radius:12px;padding:18px;max-width:560px;width:100%;text-align:right;box-shadow:0 12px 40px rgba(0,0,0,0.35)}
+    .modal{display:none;position:fixed;z-index:1200;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.72);align-items:center;justify-content:center;padding:20px;opacity:0}
+    .modal[aria-hidden="false"]{display:flex;opacity:1}
+    .modal-content{
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      backdrop-filter: blur(8px);
+      border-radius:12px;padding:18px;max-width:560px;width:100%;text-align:right;box-shadow:0 12px 40px rgba(0,0,0,0.35);
+      transform: translateY(6px);
+    }
     .close{float:left;color:#888;font-size:26px;font-weight:700;cursor:pointer}
-    .close:hover{color:#000}
+    .close:hover{color:#fff}
 
     /* responsive */
-      <span class="close" data-modal="modal6" title="Close">&times;</span>
-      <h3 id="m6t">Movie Posters</h3>
-      <p>Designing creative and professional movie posters inspired by classic and modern styles — combining graphic art and visual storytelling.</p>
+    @media (max-width:640px){
+      .project-card{width:100%}
+      .profile-img{width:120px;height:120px}
+    }
+
+   .modal-img {
+      width: 80%;
+      max-width: 400px;
+      height: auto;
+      display: block;
+      margin: 12px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .inner-link, .film-link {
+      color: #5bbcff;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .inner-link:hover, .film-link:hover {
+      text-decoration: underline;
+      color: #ffd700;
+    }
+
+    /* overlay div (for background fade) */
+    .bg-overlay {
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      z-index:0; /* behind .container (z-index:2) */
+      background-size: cover;
+      background-position: center;
+      transition: opacity 2s ease-in-out;
+      opacity: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- background overlay (JS will manage its background-image and opacity) -->
+  <div id="bg-overlay" class="bg-overlay" aria-hidden="true"></div>
+
+  <!-- language switch -->
+  <div class="language-switch" aria-hidden="false">
+    <img src="Flag_of_iran_standard.svg.webp" id="fa-btn" title="فارسی" class="flag-img" alt="fa">
+    <img src="Flag_of_the_United_Kingdom_(3-5).svg.webp" id="en-btn" title="English" class="flag-img" alt="en">
+  </div>
+
+  <!-- ==== PERSIAN CONTENT ==== -->
+  <main class="container" id="fa-content" lang="fa" dir="rtl" style="display:block;">
+    <div class="slogan">زن، زندگی، آزادی</div>
+    <img class="profile-img" src="profile.webp" alt="PROFESSOR">
+    <div class="professor-title">Professor Cardinal</div>
+    <h1>ادیتور ویدیو و عکس</h1>
+    <h2>به سوی بینهایت و فراتر از آن</h2>
+
+    <a class="email-button" href="mailto:sirvanprofessor@gmail.com">📧 EMAIL ADDRESS</a>
+
+    <div class="projects" id="fa-projects">
+      <div class="project-card" data-modal="modal1">
+        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/chaplin.webp" alt="تاریخ سینما">
+        <h3>تاریخ سینما</h3>
+        <p>سینما و تاریخ</p>
+      </div>
+
+      <div class="project-card" data-modal="modal2">
+        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="تاریخ نگاری">
+        <h3>تاریخ نگاری</h3>
+        <p>نگاهی دقیق به تاریخ</p>
+      </div>
+
+      <div class="project-card" data-modal="modal3">
+        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project2.webp" alt="پوستر سینمایی">
+        <h3>پوستر سینمایی</h3>
+        <p>طراحی پوستر فیلم های سینمایی</p>
+      </div>
+    </div>
+
+    <!-- Director modal (FA) -->
+    <div id="modal-director-fa" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-labelledby="director-fa-title">
+        <span class="close" data-modal="modal-director-fa" title="بستن">&times;</span>
+        <h3 id="director-fa-title">کریستوفر نولان</h3>
+        <p>
+          کریستوفر نولان یکی از کارگردانان برجسته سینمای معاصر است که آثارش میان تخیل، فلسفه و واقعیت در نوسان‌اند. او با روایت‌های چندلایه و ساختارهای پیچیده‌اش تعریفی تازه از فیلم مدرن ارائه داده است.
+        </p>
+        <p>آثار شاخص:
+          <a href="#" class="film-link" data-target="modal-inception-fa">Inception</a> ·
+          <a href="#" class="film-link" data-target="modal-interstellar-fa">Interstellar</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Film modals (FA) -->
+    <div id="modal-inception-fa" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-labelledby="inception-fa-title">
+        <span class="close" data-modal="modal-inception-fa" title="بستن">&times;</span>
+        <h3 id="inception-fa-title">Inception (۲۰۱۰)</h3>
+        <p>فیلمی پیچیده درباره رویا، ناخودآگاه و واقعیت — نولان در این اثر مرز خیال و حقیقت را محو کرد.</p>
+        <p>بازگشت به: <a href="#" class="inner-link" data-target="modal-director-fa">کریستوفر نولان</a></p>
+        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/inception.webp" alt="Inception Poster" class="modal-img">
+      </div>
+    </div>
+
+    <div id="modal-interstellar-fa" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-labelledby="interstellar-fa-title">
+        <span class="close" data-modal="modal-interstellar-fa" title="بستن">&times;</span>
+        <h3 id="interstellar-fa-title">Interstellar (۲۰۱۴)</h3>
+        <p>اثری شاعرانه و علمی درباره عشق، زمان و بقای نوع بشر — نولان در این فیلم مفاهیم فیزیک نظری را با احساس انسانی پیوند زد.</p>
+        <p>بازگشت به: <a href="#" class="inner-link" data-target="modal-director-fa">کریستوفر نولان</a></p>
+      </div>
+    </div>
+
+    <div class="social-icons" style="margin-top:22px;">
+      <a href="https://www.instagram.com/thatscardinal" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="https://t.me/onesecondloop" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://github.com/sirvanprofessor-beep" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+    </div>
+  </main>
+
+  <!-- ==== ENGLISH CONTENT ==== -->
+  <main class="container" id="en-content" lang="en" dir="ltr" style="display:none;">
+    <div class="slogan" style="font-family: 'Cinzel Decorative', serif;">Woman, Life, Freedom</div>
+    <img class="profile-img" src="profile.webp" alt="PROFESSOR">
+    <div class="professor-title">Professor Cardinal</div>
+    <h1>Video & Photo Editor</h1>
+    <h2>To infinity and beyond</h2>
+
+    <a class="email-button" href="mailto:sirvanprofessor@gmail.com">📧 EMAIL ADDRESS</a>
+
+    <div class="projects" id="en-projects">
+      <div class="project-card" data-modal="modal4">
+        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/chaplin.webp" alt="Cinema History">
+        <h3>Cinema History</h3>
+        <p>Cinema and history</p>
+      </div>
+
+      <div class="project-card" data-modal="modal5">
+        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="Historiography">
+        <h3>Historiography</h3>
+        <p>A detailed look at history</p>
+      </div>
+
+      <div class="project-card" data-modal="modal6">
+        <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project2.webp" alt="Movie Posters">
+        <h3>Movie Posters</h3>
+        <p>Creative movie poster designs</p>
+      </div>
+    </div>
+
+    <!-- Director modal (EN) -->
+    <div id="modal-director-en" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-labelledby="director-en-title">
+        <span class="close" data-modal="modal-director-en" title="Close">&times;</span>
+        <h3 id="director-en-title">Christopher Nolan</h3>
+        <p>
+          Christopher Nolan is one of the most influential filmmakers of the modern era. Known for his intellectual storytelling and complex narrative structures.
+        </p>
+        <p>Notable works:
+          <a href="#" class="inner-link" data-target="modal-inception-en">Inception</a> ·
+          <a href="#" class="inner-link" data-target="modal-interstellar-en">Interstellar</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Film modals (EN) -->
+    <div id="modal-inception-en" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-labelledby="inception-en-title">
+        <span class="close" data-modal="modal-inception-en" title="Close">&times;</span>
+        <h3 id="inception-en-title">Inception (2010)</h3>
+        <p>A mind-bending journey into the architecture of dreams. Nolan blends science fiction, emotion, and psychological depth to question what is real and what is illusion.</p>
+        <p>Back to: <a href="#" class="inner-link" data-target="modal-director-en">Christopher Nolan</a></p>
+      </div>
+    </div>
+
+    <div id="modal-interstellar-en" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-labelledby="interstellar-en-title">
+        <span class="close" data-modal="modal-interstellar-en" title="Close">&times;</span>
+        <h3 id="interstellar-en-title">Interstellar (2014)</h3>
+        <p>A poetic and scientific exploration of love, time, and survival. Nolan connects human feeling with the vastness of the cosmos.</p>
+        <p>Back to: <a href="#" class="inner-link" data-target="modal-director-en">Christopher Nolan</a></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- other informational modals (kept as in your original) -->
+  <div id="modal1" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-labelledby="m1t">
+      <span class="close" data-modal="modal1" title="بستن">&times;</span>
+      <h3 id="m1t">تاریخ سینما</h3>
+      <p>اواخر قرن ۱۹ (۱۸۹۵): برادران لومیر ... (متن شما)</p>
+      <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project52.webp" alt="oops" class="modal-img">
     </div>
   </div>
 
+  <div id="modal2" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-labelledby="m2t">
+      <span class="close" data-modal="modal2" title="بستن">&times;</span>
+      <h3 id="m2t">تاریخ نگاری</h3>
+      <p>... (متن شما)</p>
+      <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project1.webp" alt="Cinema History" class="modal-img">
+    </div>
+  </div>
+
+  <div id="modal3" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-labelledby="m3t">
+      <span class="close" data-modal="modal3" title="بستن">&times;</span>
+      <h3 id="m3t">پوستر سینمایی</h3>
+      <p>... (متن شما)</p>
+      <img src="https://raw.githubusercontent.com/sirvanprofessor-beep/THATSCARDINAL/main/project41.webp" alt="oops" class="modal-img">
+    </div>
+  </div>
+
+  <!-- remaining modals you had (kept minimal here, add more if needed) -->
+
   <script>
+    // All JS inside DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
 
+      /* ---------------- language switch (persist) ---------------- */
+      const faBtn = document.getElementById('fa-btn');
+      const enBtn = document.getElementById('en-btn');
+      const faContent = document.getElementById('fa-content');
+      const enContent = document.getElementById('en-content');
 
-    // ====== Language switch logic (persist in localStorage) ======
-    const faBtn = document.getElementById('fa-btn');
-    const enBtn = document.getElementById('en-btn');
-    const faContent = document.getElementById('fa-content');
-    const enContent = document.getElementById('en-content');
-
-    function setLanguage(lang){
-      if(lang === 'fa'){
-        faContent.style.display = 'block';
-        enContent.style.display = 'none';
-        document.documentElement.lang = 'fa';
-        document.body.dir = 'rtl';
-      } else {
-        faContent.style.display = 'none';
-        enContent.style.display = 'block';
-        document.documentElement.lang = 'en';
-        document.body.dir = 'ltr';
+      function setLanguage(lang){
+        if(lang === 'fa'){
+          faContent.style.display = 'block';
+          enContent.style.display = 'none';
+          document.documentElement.lang = 'fa';
+          document.body.dir = 'rtl';
+        } else {
+          faContent.style.display = 'none';
+          enContent.style.display = 'block';
+          document.documentElement.lang = 'en';
+          document.body.dir = 'ltr';
+        }
+        try { localStorage.setItem('lang', lang); } catch(e){}
       }
-      try { localStorage.setItem('lang', lang); } catch(e){}
-    }
-
-    faBtn.addEventListener('click', ()=> setLanguage('fa'));
-    enBtn.addEventListener('click', ()=> setLanguage('en'));
-
-    // ====== Modal open/close logic ======
-    function openModal(id){
-      const modal = document.getElementById(id);
-      if(!modal) return;
-      modal.setAttribute('aria-hidden','false');
-      modal.style.display = 'flex';
-      // set focus for accessibility
-      const dlg = modal.querySelector('.modal-content');
-      if(dlg) dlg.focus();
-    }
-    function closeModal(id){
-      const modal = document.getElementById(id);
-      if(!modal) return;
-      modal.setAttribute('aria-hidden','true');
-      modal.style.display = 'none';
-    }
-
-    document.addEventListener('DOMContentLoaded', ()=>{
-      // set bg
-     
-
-      // restore language
+      faBtn.addEventListener('click', ()=> setLanguage('fa'));
+      enBtn.addEventListener('click', ()=> setLanguage('en'));
       const saved = (localStorage.getItem('lang') || 'fa');
       setLanguage(saved);
 
-      // attach openers for all project-cards
+      /* ---------------- modal utilities ---------------- */
+      function fadeIn(el, duration = 400){
+        el.style.display = 'flex';
+        el.style.transition = `opacity ${duration}ms ease, transform ${duration}ms ease`;
+        // small transform for pop
+        el.style.opacity = '0';
+        const content = el.querySelector('.modal-content');
+        if(content) content.style.transform = 'translateY(10px)';
+        requestAnimationFrame(()=>{
+          el.style.opacity = '1';
+          if(content) content.style.transform = 'translateY(0)';
+        });
+        el.setAttribute('aria-hidden','false');
+      }
+      function fadeOut(el, duration = 300){
+        el.style.transition = `opacity ${duration}ms ease, transform ${duration}ms ease`;
+        const content = el.querySelector('.modal-content');
+        el.style.opacity = '0';
+        if(content) content.style.transform = 'translateY(10px)';
+        setTimeout(()=> {
+          el.style.display = 'none';
+          el.setAttribute('aria-hidden','true');
+          if(content) content.style.transform = '';
+        }, duration);
+      }
+
+      function openModalById(id){
+        const modal = document.getElementById(id);
+        if(!modal) return;
+        // close any open modals first (optional)
+        document.querySelectorAll('.modal[aria-hidden="false"]').forEach(m => {
+          if(m.id !== id) fadeOut(m,200);
+        });
+        fadeIn(modal, 400);
+      }
+      function closeModalById(id){
+        const modal = document.getElementById(id);
+        if(!modal) return;
+        fadeOut(modal, 300);
+      }
+
+      // attach project-card openers
       document.querySelectorAll('.project-card').forEach(card=>{
         card.addEventListener('click', ()=>{
           const modalId = card.getAttribute('data-modal');
-          if(modalId) openModal(modalId);
+          if(modalId) openModalById(modalId);
         });
       });
 
-      // attach close buttons
+      // attach close buttons (they have data-modal attribute)
       document.querySelectorAll('.close').forEach(btn=>{
         btn.addEventListener('click', ()=>{
           const modalId = btn.getAttribute('data-modal');
-          if(modalId) closeModal(modalId);
+          if(modalId) closeModalById(modalId);
         });
       });
 
-      // clicking outside modal-content closes modal
-      window.addEventListener('click', e=>{
-        document.querySelectorAll('.modal').forEach(modal=>{
-          if(e.target === modal) closeModal(modal.id);
+      // click outside modal-content to close
+      document.querySelectorAll('.modal').forEach(modal=>{
+        modal.addEventListener('click', e=>{
+          if(e.target === modal) {
+            fadeOut(modal);
+          }
         });
       });
 
-      // close on ESC
+      // ESC to close current open modal(s)
       window.addEventListener('keydown', e=>{
         if(e.key === 'Escape' || e.key === 'Esc'){
-          document.querySelectorAll('.modal').forEach(m=>{ if(m.getAttribute('aria-hidden') === 'false') closeModal(m.id); });
+          document.querySelectorAll('.modal[aria-hidden="false"]').forEach(m => fadeOut(m));
         }
       });
+
+      /* -------------- inner links (modal -> modal) -------------- */
+      // any element with .inner-link or .film-link and data-target attribute
+      function setupInnerLinks(selector){
+        document.querySelectorAll(selector).forEach(link=>{
+          link.addEventListener('click', e=>{
+            e.preventDefault();
+            const targetId = link.getAttribute('data-target');
+            if(!targetId) return;
+            const openModal = document.querySelector('.modal[aria-hidden="false"]');
+            if(openModal){
+              fadeOut(openModal, 300);
+              setTimeout(()=> openModalById(targetId), 320);
+            } else {
+              openModalById(targetId);
+            }
+          });
+        });
+      }
+      setupInnerLinks('.inner-link');
+      setupInnerLinks('.film-link');
+
+      /* -------------- background fade rotation -------------- */
+      const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
+      let current = 0;
+      const body = document.body;
+      const bgOverlay = document.getElementById('bg-overlay');
+
+      // set initial background on body and overlay
+      function setInitialBackground(){
+        // set body background (fallback)
+        body.style.backgroundImage = `url('${backgrounds[current]}')`;
+        body.style.backgroundRepeat = 'no-repeat';
+        body.style.backgroundPosition = 'center';
+        body.style.backgroundSize = 'cover';
+        // set overlay to next (hidden)
+        const next = (current + 1) % backgrounds.length;
+        bgOverlay.style.backgroundImage = `url('${backgrounds[next]}')`;
+        bgOverlay.style.opacity = 0;
+      }
+      setInitialBackground();
+
+      // rotate every 30s
+      setInterval(()=>{
+        const next = (current + 1) % backgrounds.length;
+        // put next on overlay and fade it in
+        bgOverlay.style.backgroundImage = `url('${backgrounds[next]}')`;
+        bgOverlay.style.opacity = 1;
+        // after transition, swap body background and hide overlay
+        setTimeout(()=>{
+          body.style.backgroundImage = `url('${backgrounds[next]}')`;
+          bgOverlay.style.opacity = 0;
+          current = next;
+        }, 1800);
+      }, 30000);
+
+      /* -------------- small accessibility: trap focus (optional) -------------- */
+      // (You can add focus trap later if needed)
     });
+
+    // helper openModal used in earlier non-DOM code (keeps backward compat)
+    function openModal(id){ document.addEventListener('DOMContentLoaded', ()=>{}); try{ const el = document.getElementById(id); if(el) el.style.display='flex'; }catch(e){} }
   </script>
-<script>
-  // ====== Background rotation with fade effect ======
-const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
-let current = 0;
-const body = document.body;
-
-
-// 👇 این بخش تصویر اولیه رو برمی‌گردونه
-body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
-body.style.backgroundSize = 'cover';
-
-  const overlay = document.createElement('div');
-  overlay.style.position = 'fixed';
-  overlay.style.top = 0;
-  overlay.style.left = 0;
-  overlay.style.width = '100%';
-  overlay.style.height = '100%';
-  overlay.style.zIndex = '-1';
-  overlay.style.backgroundSize = 'cover';
-  overlay.style.backgroundPosition = 'center';
-  overlay.style.transition = 'opacity 2s ease-in-out';
-  overlay.style.opacity = 0;
-  document.body.appendChild(overlay);
-
-  body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
-  body.style.backgroundSize = 'cover';
-
-  setInterval(() => {
-    const next = (current + 1) % backgrounds.length;
-    overlay.style.backgroundImage = `url('${backgrounds[next]}')`;
-    overlay.style.opacity = 1;
-
-    setTimeout(() => {
-      body.style.backgroundImage = `url('${backgrounds[next]}')`;
-      overlay.style.opacity = 0;
-      current = next;
-    }, 1800);
-  }, 30000);
-</script>
-
-
 </body>
 </html>

@@ -89,12 +89,32 @@ backdrop-filter: blur(8px);;color:#fff;border-radius:12px;padding:18px;max-width
   border-radius: 10px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.3);
 }
+    .inner-link {
+  color: #5bbcff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.inner-link:hover {
+  text-decoration: underline;
+  color: #ffd700;
+}
+.inner-link {
+  color: #5bbcff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.inner-link:hover {
+  text-decoration: underline;
+  color: #ffd700;
+}
+
 </style>
 
 
 
 
   </style>
+  
 </head>
 <body>
 
@@ -136,6 +156,55 @@ backdrop-filter: blur(8px);;color:#fff;border-radius:12px;padding:18px;max-width
         <p>طراحی پوستر فیلم های سینمایی</p>
     </div>
  </div>
+<!-- ==== MODAL: DIRECTOR INTRO ==== -->
+<div id="modal-director" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="director-title">
+    <span class="close" data-modal="modal-director" title="بستن">&times;</span>
+    <h3 id="director-title">کریستوفر نولان</h3>
+    <p>
+      کریستوفر نولان یکی از کارگردانان برجسته سینمای معاصر است که آثارش
+      میان تخیل، فلسفه و واقعیت در نوسان‌اند. او با روایت‌های چندلایه و ساختارهای پیچیده‌اش
+      توانسته تعریفی تازه از فیلم مدرن ارائه دهد.
+    </p>
+    <p>
+      آثار شاخص:
+      <a href="#" class="inner-link" data-target="modal-inception">Inception</a> ،
+      <a href="#" class="inner-link" data-target="modal-interstellar">Interstellar</a>
+    </p>
+  </div>
+</div>
+
+<!-- ==== MODAL: FILM 1 ==== -->
+<div id="modal-inception" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="film1-title">
+    <span class="close" data-modal="modal-inception" title="بستن">&times;</span>
+    <h3 id="film1-title">Inception (۲۰۱۰)</h3>
+    <p>
+      فیلمی پیچیده درباره رویا، ناخودآگاه و واقعیت. نولان با این اثر مرز میان خیال و حقیقت را محو کرد
+      و یکی از تأثیرگذارترین فیلم‌های قرن ۲۱ را ساخت.
+    </p>
+    <p>
+      بازگشت به:
+      <a href="#" class="inner-link" data-target="modal-director">کریستوفر نولان</a>
+    </p>
+  </div>
+</div>
+
+<!-- ==== MODAL: FILM 2 ==== -->
+<div id="modal-interstellar" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="film2-title">
+    <span class="close" data-modal="modal-interstellar" title="بستن">&times;</span>
+    <h3 id="film2-title">Interstellar (۲۰۱۴)</h3>
+    <p>
+      اثری شاعرانه و علمی درباره عشق، زمان و بقای نوع بشر. نولان در این فیلم مفاهیم فیزیک نظری را
+      با احساس انسانی پیوند می‌دهد.
+    </p>
+    <p>
+      بازگشت به:
+      <a href="#" class="inner-link" data-target="modal-director">کریستوفر نولان</a>
+    </p>
+  </div>
+</div>
 
     <div class="social-icons">
       <a href="https://www.instagram.com/thatscardinal" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
@@ -238,6 +307,58 @@ backdrop-filter: blur(8px);;color:#fff;border-radius:12px;padding:18px;max-width
   </div>
 
   <!-- ==== MODALS (ENGLISH) ==== -->
+  <!-- ==== MODAL: DIRECTOR INTRO (ENGLISH) ==== -->
+<div id="modal-director-en" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="director-en-title">
+    <span class="close" data-modal="modal-director-en" title="Close">&times;</span>
+    <h3 id="director-en-title">Christopher Nolan</h3>
+    <p>
+      Christopher Nolan is one of the most influential filmmakers of the modern era.
+      Known for his intellectual storytelling and complex narrative structures,
+      Nolan explores the boundaries between reality, time, and human perception.
+    </p>
+    <p>
+      Notable works:
+      <a href="#" class="inner-link" data-target="modal-inception-en">Inception</a> ·
+      <a href="#" class="inner-link" data-target="modal-interstellar-en">Interstellar</a>
+    </p>
+  </div>
+</div>
+
+<!-- ==== MODAL: FILM 1 (INCEPTION) ==== -->
+<div id="modal-inception-en" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="film1-en-title">
+    <span class="close" data-modal="modal-inception-en" title="Close">&times;</span>
+    <h3 id="film1-en-title">Inception (2010)</h3>
+    <p>
+      A mind-bending journey into the architecture of dreams.
+      Nolan blends science fiction, emotion, and psychological depth
+      to question what is real and what is illusion.
+    </p>
+    <p>
+      Back to:
+      <a href="#" class="inner-link" data-target="modal-director-en">Christopher Nolan</a>
+    </p>
+  </div>
+</div>
+
+<!-- ==== MODAL: FILM 2 (INTERSTELLAR) ==== -->
+<div id="modal-interstellar-en" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="film2-en-title">
+    <span class="close" data-modal="modal-interstellar-en" title="Close">&times;</span>
+    <h3 id="film2-en-title">Interstellar (2014)</h3>
+    <p>
+      A poetic and scientific exploration of love, time, and survival.
+      Through stunning visuals and emotional depth,
+      Nolan connects human feeling with the vastness of the cosmos.
+    </p>
+    <p>
+      Back to:
+      <a href="#" class="inner-link" data-target="modal-director-en">Christopher Nolan</a>
+    </p>
+  </div>
+</div>
+
  <div id="modal6" class="modal" aria-hidden="true">
     <div class="modal-content" role="dialog" aria-labelledby="m6t">
       <span class="close" data-modal="modal6" title="Close">&times;</span>
@@ -429,6 +550,28 @@ body.style.backgroundSize = 'cover';
       current = next;
     }, 1800);
   }, 30000);
+
+  // ===== لینک‌های داخل مودال برای باز کردن مودال دیگر =====
+document.querySelectorAll('.inner-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = link.getAttribute('data-target');
+    // بستن تمام مودال‌های باز
+    document.querySelectorAll('.modal[aria-hidden="false"]').forEach(openModalEl => {
+      openModalEl.setAttribute('aria-hidden', 'true');
+      openModalEl.style.display = 'none';
+    });
+    // باز کردن مودال جدید
+    if (targetId) {
+      const newModal = document.getElementById(targetId);
+      if (newModal) {
+        newModal.setAttribute('aria-hidden', 'false');
+        newModal.style.display = 'flex';
+      }
+    }
+  });
+});
+
 </script>
 
 

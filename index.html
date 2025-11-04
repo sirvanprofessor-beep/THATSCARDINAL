@@ -115,6 +115,33 @@
       transition: opacity 2s ease-in-out;
       opacity: 0;
     }
+.modal-content {
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 18px;
+  max-width: 560px;
+  width: 100%;
+  text-align: right;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  transform: translateY(6px);
+
+  /* 👇 این دو خط جدید هستن */
+  max-height: 80vh;       /* ارتفاع مودال محدود بشه */
+  overflow-y: auto;       /* اسکرول عمودی فعال بشه */
+  scrollbar-width: thin;  /* برای مرورگرهای فایرفاکس */
+}
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.4);
+  border-radius: 4px;
+}
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.7);
+}
 
   </style>
 </head>

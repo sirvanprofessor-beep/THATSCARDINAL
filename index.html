@@ -427,98 +427,99 @@ A powerful poster can stop a passerby, spark curiosity, and draw them into the e
   </div>
 
   <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // ====== Language switch logic ======
+  const faBtn = document.getElementById('fa-btn');
+  const enBtn = document.getElementById('en-btn');
+  const faContent = document.getElementById('fa-content');
+  const enContent = document.getElementById('en-content');
 
-
-    // ====== Language switch logic (persist in localStorage) ======
-    const faBtn = document.getElementById('fa-btn');
-    const enBtn = document.getElementById('en-btn');
-    const faContent = document.getElementById('fa-content');
-    const enContent = document.getElementById('en-content');
-
-    function setLanguage(lang){
-      if(lang === 'fa'){
-        faContent.style.display = 'block';
-        enContent.style.display = 'none';
-        document.documentElement.lang = 'fa';
-        document.body.dir = 'rtl';
-      } else {
-        faContent.style.display = 'none';
-        enContent.style.display = 'block';
-        document.documentElement.lang = 'en';
-        document.body.dir = 'ltr';
-      }
-      try { localStorage.setItem('lang', lang); } catch(e){}
+  function setLanguage(lang){
+    if(lang === 'fa'){
+      faContent.style.display = 'block';
+      enContent.style.display = 'none';
+      document.documentElement.lang = 'fa';
+      document.body.dir = 'rtl';
+    } else {
+      faContent.style.display = 'none';
+      enContent.style.display = 'block';
+      document.documentElement.lang = 'en';
+      document.body.dir = 'ltr';
     }
+    try { localStorage.setItem('lang', lang); } catch(e){}
+  }
 
-    faBtn.addEventListener('click', ()=> setLanguage('fa'));
-    enBtn.addEventListener('click', ()=> setLanguage('en'));
+  faBtn.addEventListener('click', ()=> setLanguage('fa'));
+  enBtn.addEventListener('click', ()=> setLanguage('en'));
+  const saved = (localStorage.getItem('lang') || 'fa');
+  setLanguage(saved);
 
-    // ====== Modal open/close logic ======
-    function openModal(id){
-      const modal = document.getElementById(id);
-      if(!modal) return;
-      modal.setAttribute('aria-hidden','false');
-      modal.style.display = 'flex';
-      // set focus for accessibility
-      const dlg = modal.querySelector('.modal-content');
-      if(dlg) dlg.focus();
-    }
-    function closeModal(id){
-      const modal = document.getElementById(id);
-      if(!modal) return;
-      modal.setAttribute('aria-hidden','true');
-      modal.style.display = 'none';
-    }
+  // ====== Modal fade open/close logic ======
+  function fadeIn(element) {
+    element.style.display = 'flex';
+    element.style.opacity = 0;
+    element.style.transition = 'opacity 0.5s ease';
+    requestAnimationFrame(() => {
+      element.style.opacity = 1;
+    });
+  }
 
-    document.addEventListener('DOMContentLoaded', ()=>{
-      // set bg
-     
+  function fadeOut(element) {
+    element.style.opacity = 0;
+    element.style.transition = 'opacity 0.4s ease';
+    setTimeout(() => {
+      element.style.display = 'none';
+    }, 400);
+  }
 
-      // restore language
-      const saved = (localStorage.getItem('lang') || 'fa');
-      setLanguage(saved);
+  function openModal(id){
+    const modal = document.getElementById(id);
+    if(!modal) return;
+    modal.setAttribute('aria-hidden','false');
+    fadeIn(modal);
+  }
 
-      // attach openers for all project-cards
-      document.querySelectorAll('.project-card').forEach(card=>{
-        card.addEventListener('click', ()=>{
-          const modalId = card.getAttribute('data-modal');
-          if(modalId) openModal(modalId);
-        });
+  function closeModal(id){
+    const modal = document.getElementById(id);
+    if(!modal) return;
+    modal.setAttribute('aria-hidden','true');
+    fadeOut(modal);
+  }
+
+  document.querySelectorAll('.project-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const modalId = card.getAttribute('data-modal');
+      if(modalId) openModal(modalId);
+    });
+  });
+
+  document.querySelectorAll('.close').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const modalId = btn.getAttribute('data-modal');
+      if(modalId) closeModal(modalId);
+    });
+  });
+
+  // close when clicking outside
+  document.querySelectorAll('.modal').forEach(modal=>{
+    modal.addEventListener('click', e => {
+      if (e.target.classList.contains('modal')) closeModal(modal.id);
+    });
+  });
+
+  // close on ESC
+  window.addEventListener('keydown', e=>{
+    if(e.key === 'Escape' || e.key === 'Esc'){
+      document.querySelectorAll('.modal').forEach(m=>{
+        if(m.getAttribute('aria-hidden') === 'false') fadeOut(m);
       });
-
-      // attach close buttons
-      document.querySelectorAll('.close').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          const modalId = btn.getAttribute('data-modal');
-          if(modalId) closeModal(modalId);
-        });
-      });
-
-      // clicking outside modal-content closes modal
-    document.querySelectorAll('.modal').forEach(modal=>{
-  modal.addEventListener('click', e => {
-    if (e.target.classList.contains('modal')) {
-      closeModal(modal.id);
     }
   });
-});
 
-
-      // close on ESC
-      window.addEventListener('keydown', e=>{
-        if(e.key === 'Escape' || e.key === 'Esc'){
-          document.querySelectorAll('.modal').forEach(m=>{ if(m.getAttribute('aria-hidden') === 'false') closeModal(m.id); });
-        }
-      });
-    });
-  </script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
   // ====== Background rotation with fade effect ======
   const backgrounds = ['background2.webp', 'background5.webp', 'background7.webp'];
   let current = 0;
   const body = document.body;
-
   const overlay = document.createElement('div');
   overlay.style.position = 'fixed';
   overlay.style.top = 0;
@@ -531,10 +532,8 @@ document.addEventListener('DOMContentLoaded', () => {
   overlay.style.transition = 'opacity 2s ease-in-out';
   overlay.style.opacity = 0;
   document.body.appendChild(overlay);
-
   body.style.background = `url('${backgrounds[current]}') no-repeat center center fixed`;
   body.style.backgroundSize = 'cover';
-
   setInterval(() => {
     const next = (current + 1) % backgrounds.length;
     overlay.style.backgroundImage = `url('${backgrounds[next]}')`;
@@ -546,28 +545,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1800);
   }, 30000);
 
-  // ====== لینک‌های داخل مودال برای باز کردن مودال دیگر ======
+  // ====== Inner links between modals (with fade transition) ======
   document.querySelectorAll('.inner-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const targetId = link.getAttribute('data-target');
-      // بستن تمام مودال‌های باز
-      document.querySelectorAll('.modal[aria-hidden="false"]').forEach(openModalEl => {
-        openModalEl.setAttribute('aria-hidden', 'true');
-        openModalEl.style.display = 'none';
-      });
-      // باز کردن مودال جدید
-      if (targetId) {
+      if (!targetId) return;
+
+      // پیدا کردن مودال باز فعلی
+      const openModalEl = document.querySelector('.modal[aria-hidden="false"]');
+      if (openModalEl) {
+        fadeOut(openModalEl);
+        setTimeout(() => {
+          openModalEl.setAttribute('aria-hidden', 'true');
+          const newModal = document.getElementById(targetId);
+          if (newModal) {
+            newModal.setAttribute('aria-hidden', 'false');
+            fadeIn(newModal);
+          }
+        }, 400);
+      } else {
         const newModal = document.getElementById(targetId);
         if (newModal) {
           newModal.setAttribute('aria-hidden', 'false');
-          newModal.style.display = 'flex';
+          fadeIn(newModal);
         }
       }
     });
   });
 });
 </script>
+
 
 </body>
 </html>
